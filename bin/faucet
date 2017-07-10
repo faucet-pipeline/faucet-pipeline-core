@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+"use strict";
+
+let start = require("../index");
+let parseArgs = require("minimist");
+
+const HELP = `
+Usage:
+  $ faucet [options]
+
+Options:
+  -h, --help
+    display this help message
+  -c, --config
+    configuration file (defaults to \`faucet.js\`)
+  -w, --watch
+    monitor the file system for changes to recompile automatically
+  --no-fingerprint
+    supppress fingerprint hash in resulting files
+  --compact
+    reduce output size (e.g. via minification)
+`.trim();
+
+let argv = parseArgs(process.argv.slice(2), {
+	alias: {
+		c: "config",
+		w: "watch",
+		h: "help"
+	},
+	boolean: ["watch", "fingerprint", "compact"]
+});
+
+if(argv.help) {
+	console.log(HELP); // eslint-disable-line no-console
+	process.exit();
+}
+
+let rootDir = process.cwd();
+let config = argv.config;
+let options = {
+	watch: argv.watch,
+	suppressFingerprinting: argv.fingerprint === false,
+	compact: argv.compact
+};
+
+if(options.watch) {
+	console.error(`monitoring file system at ${rootDir}`);
+
+	if(!options.suppressFingerprinting) { // for convenience
+		console.error("you might consider using `--no-fingerprint` to avoid " +
+				"littering your file system with obsolete bundles");
+	}
+}
+
+start(rootDir, config, options);

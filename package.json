@@ -1,0 +1,36 @@
+{
+  "name": "faucet-pipeline-cli",
+  "version": "0.7.0",
+  "description": "front-end asset pipeline",
+  "author": "FND",
+  "contributors": [
+    "Lucas Dohmen <lucas.dohmen@innoq.com>"
+  ],
+  "license": " Apache-2.0",
+  "homepage": "https://github.com/faucet-pipeline/faucet-pipeline-cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/faucet-pipeline/faucet-pipeline-cli"
+  },
+  "bugs": {
+    "url": "https://github.com/faucet-pipeline/faucet-pipeline-cli/issues"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "main": "index.js",
+  "bin": {
+    "faucet": "bin/faucet"
+  },
+  "scripts": {
+    "test": "eslint --cache *.js bin/* && echo ✓"
+  },
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "nite-owl": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.0.0",
+    "eslint-config-fnd": "^1.1.1"
+  }
+}
