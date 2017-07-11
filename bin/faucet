@@ -38,15 +38,15 @@ if(argv.help) {
 let rootDir = process.cwd();
 let config = argv.config;
 let options = {
-	watch: argv.watch,
-	suppressFingerprinting: argv.fingerprint === false,
-	compact: argv.compact
+	watch: !!argv.watch,
+	fingerprint: !!argv.fingerprint,
+	compact: !!argv.compact
 };
 
 if(options.watch) {
 	console.error(`monitoring file system at ${rootDir}`);
 
-	if(!options.suppressFingerprinting) { // for convenience
+	if(options.fingerprint) { // for convenience
 		console.error("you might consider using `--no-fingerprint` to avoid " +
 				"littering your file system with obsolete bundles");
 	}

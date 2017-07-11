@@ -1,3 +1,5 @@
+"use strict";
+
 let makeWatcher = require("nite-owl");
 let path = require("path");
 
@@ -6,8 +8,11 @@ const PLUGINS = {
 	css: "faucet-pipeline-css"
 };
 
-module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line indent
-		{ watch, suppressFingerprinting, compact }) => {
+module.exports = (rootDir, config = "faucet.js", { watch, fingerprint, compact }) => {
+	if(fingerprint === undefined) { // set default value
+		fingerprint = true;
+	}
+
 	let configPath = path.resolve(rootDir, config);
 	let configDir = path.dirname(configPath);
 	config = require(configPath);
@@ -21,8 +26,7 @@ module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line ind
 		}
 
 		let plugin = load(PLUGINS[type]);
-		plugin(cfg, { rootDir, configDir }, // eslint-disable-next-line indent
-				{ watcher, suppressFingerprinting, compact });
+		plugin(cfg, { rootDir, configDir }, { watcher, fingerprint, compact });
 	});
 };
 
