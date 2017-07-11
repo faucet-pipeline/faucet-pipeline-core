@@ -1,6 +1,6 @@
 {
   "name": "faucet-pipeline-cli",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "front-end asset pipeline",
   "author": "FND",
   "contributors": [
@@ -23,7 +23,7 @@
     "faucet": "bin/faucet"
   },
   "scripts": {
-    "test": "eslint --cache *.js bin/* && echo ✓"
+    "test": "eslint --cache *.js lib bin/* && echo ✓"
   },
   "dependencies": {
     "minimist": "^1.2.0",

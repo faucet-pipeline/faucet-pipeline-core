@@ -17,14 +17,18 @@ mkdir tmp_release
 git ls-tree --name-only HEAD | while read filename; do
 	cp -r "$filename" tmp_release
 done
+cd tmp_release
+mv lib/* ./
+rm -r lib
 
 echo "about to publish v${version}"
 read -n1 -p "enter 'y' to continue" confirmation
 if [ "$confirmation" = "y" ]; then
-	cd tmp_release
 	npm publish
 	cd ..
 	git tag "v${version}"
 	git push --tags origin master
+else
+	cd ..
 fi
 rm -r tmp_release
