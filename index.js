@@ -8,11 +8,8 @@ const PLUGINS = {
 	css: "faucet-pipeline-css"
 };
 
-module.exports = (rootDir, config = "faucet.js", { watch, fingerprint, compact }) => {
-	if(fingerprint === undefined) { // set default value
-		fingerprint = true;
-	}
-
+module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line indent
+		{ watch, fingerprint = true, compact }) => {
 	let configPath = path.resolve(rootDir, config);
 	let configDir = path.dirname(configPath);
 	config = require(configPath);
