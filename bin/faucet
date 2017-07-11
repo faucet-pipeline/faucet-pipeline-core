@@ -38,9 +38,9 @@ if(argv.help) {
 let rootDir = process.cwd();
 let config = argv.config;
 let options = {
-	watch: !!argv.watch,
-	fingerprint: !!argv.fingerprint,
-	compact: !!argv.compact
+	watch: argv.watch,
+	fingerprint: argv.fingerprint,
+	compact: argv.compact
 };
 
 if(options.watch) {
