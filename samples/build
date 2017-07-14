@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+root=`dirname "$0"`
+cd "$root"
+
+rm -r dist || true
+../bin/faucet --no-fingerprint -w

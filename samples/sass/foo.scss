@@ -1,0 +1,13 @@
+@import "./util";
+
+$spacing: 0.5em;
+
+.a {
+	display: flex;
+	padding: $spacing;
+
+	.b {
+		@extend %box;
+		background-image: asset-url("logo.jpg")
+	}
+}

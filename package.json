@@ -23,14 +23,14 @@
 		"faucet": "bin/faucet"
 	},
 	"scripts": {
-		"test": "eslint --cache *.js lib bin/* && echo ✓"
+		"test": "eslint --cache *.js lib bin/* samples/js && echo ✓"
 	},
 	"dependencies": {
 		"minimist": "^1.2.0",
 		"nite-owl": "^2.0.0"
 	},
 	"devDependencies": {
-		"eslint": "^4.0.0",
+		"eslint": "^4.2.0",
 		"eslint-config-fnd": "^1.1.1"
 	}
 }
