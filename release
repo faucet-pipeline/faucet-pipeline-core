@@ -3,8 +3,7 @@
 set -e
 set -x
 
-# XXX: hacky
-version=`grep '^  "version"' package.json | sed -e 's/^  "version": "\(.*\)".*$/\1/'`
+version=`node -p 'require("./package.json").version'`
 
 # ensure we have no unstaged changes -- TODO: report error
 git diff --exit-code --quiet
