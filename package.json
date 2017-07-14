@@ -1,5 +1,5 @@
 {
-	"name": "faucet-pipeline-cli",
+	"name": "faucet-pipeline",
 	"version": "0.8.1",
 	"description": "front-end asset pipeline",
 	"author": "FND",
@@ -7,13 +7,13 @@
 		"Lucas Dohmen <lucas.dohmen@innoq.com>"
 	],
 	"license": " Apache-2.0",
-	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline-cli",
+	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/faucet-pipeline/faucet-pipeline-cli"
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline"
 	},
 	"bugs": {
-		"url": "https://github.com/faucet-pipeline/faucet-pipeline-cli/issues"
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline/issues"
 	},
 	"engines": {
 		"node": ">=8.0.0"
