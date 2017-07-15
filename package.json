@@ -6,7 +6,7 @@
 	"contributors": [
 		"Lucas Dohmen <lucas.dohmen@innoq.com>"
 	],
-	"license": " Apache-2.0",
+	"license": "Apache-2.0",
 	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline",
 	"repository": {
 		"type": "git",
@@ -14,9 +14,6 @@
 	},
 	"bugs": {
 		"url": "https://github.com/faucet-pipeline/faucet-pipeline/issues"
-	},
-	"engines": {
-		"node": ">=8.0.0"
 	},
 	"main": "index.js",
 	"bin": {
@@ -31,6 +28,7 @@
 	},
 	"devDependencies": {
 		"eslint": "^4.2.0",
-		"eslint-config-fnd": "^1.1.1"
+		"eslint-config-fnd": "^1.1.1",
+		"release-util-fnd": "^1.0.0"
 	}
 }

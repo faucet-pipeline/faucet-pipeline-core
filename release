@@ -1,29 +1,9 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
+. ./node_modules/release-util-fnd/lib.sh
 
-version=`node -p 'require("./package.json").version'`
-
-# ensure we have no unstaged changes -- TODO: report error
-git diff --exit-code --quiet
-git diff --cached --exit-code --quiet
-
+pre_release_checks
 npm test
 
-# selectively determine package contents
-mkdir tmp_release
-git ls-tree --name-only HEAD | while read filename; do
-	cp -r "$filename" tmp_release
-done
-
-echo "about to publish v${version}"
-read -n1 -p "enter 'y' to continue" confirmation
-if [ "$confirmation" = "y" ]; then
-	cd tmp_release
-	npm publish
-	cd ..
-	git tag "v${version}"
-	git push --tags origin master
-fi
-rm -r tmp_release
+create_package > /dev/null
+publish_package
