@@ -9,7 +9,7 @@ let sass = {
 	},
 	assets: ["images.json"],
 	prefixes: {
-		browsers: ["last 2 versions", "Chrome 21"]
+		browsers: ["last 2 versions"]
 	},
 	bundles: [{
 		entryPoint: "sass/foo.scss"
