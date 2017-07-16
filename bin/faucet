@@ -26,8 +26,7 @@ let argv = parseArgs(process.argv.slice(2), {
 		c: "config",
 		w: "watch",
 		h: "help"
-	},
-	boolean: ["watch", "fingerprint", "compact"]
+	}
 });
 
 if(argv.help) {
@@ -36,12 +35,13 @@ if(argv.help) {
 }
 
 let rootDir = process.cwd();
-let config = argv.config;
-let options = {
-	watch: argv.watch,
-	fingerprint: argv.fingerprint,
-	compact: argv.compact
-};
+let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
+	let value = argv[option];
+	if(value !== undefined) {
+		memo[option] = value;
+	}
+	return memo;
+}, {});
 
 if(options.watch) {
 	console.error(`monitoring file system at ${rootDir}`);
@@ -52,4 +52,4 @@ if(options.watch) {
 	}
 }
 
-start(rootDir, config, options);
+start(rootDir, argv.config, options);
