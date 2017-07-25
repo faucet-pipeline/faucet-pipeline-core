@@ -23,7 +23,7 @@ module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line ind
 		}
 
 		let plugin = load(PLUGINS[type]);
-		plugin(cfg, { rootDir, configDir }, { watcher, fingerprint, compact });
+		plugin(cfg, configDir, { watcher, fingerprint, compact });
 	});
 };
 
