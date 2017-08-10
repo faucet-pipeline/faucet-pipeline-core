@@ -46,7 +46,7 @@ let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
 if(options.watch) {
 	console.error(`monitoring file system at ${rootDir}`);
 
-	if(options.fingerprint) { // for convenience
+	if(options.fingerprint !== false) { // for convenience
 		console.error("you might consider using `--no-fingerprint` to avoid " +
 				"littering your file system with obsolete bundles");
 	}
