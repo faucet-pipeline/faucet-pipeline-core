@@ -14,7 +14,16 @@ module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line ind
 	let configDir = path.dirname(configPath);
 	config = require(configPath);
 
-	let watcher = watch && makeWatcher(rootDir);
+	let watcher;
+	if(watch) {
+		let { watchDirs } = config;
+		/* eslint-disable indent */
+		watchDirs = watchDirs ?
+				watchDirs.map(dir => path.resolve(rootDir, dir)) :
+				[rootDir];
+		/* eslint-enable indent */
+		watcher = makeWatcher(watchDirs);
+	}
 
 	Object.keys(PLUGINS).forEach(type => {
 		let cfg = config[type];
