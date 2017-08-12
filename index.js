@@ -19,8 +19,8 @@ module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line ind
 		let { watchDirs } = config;
 		/* eslint-disable indent */
 		watchDirs = watchDirs ?
-				watchDirs.map(dir => path.resolve(rootDir, dir)) :
-				[rootDir];
+				watchDirs.map(dir => path.resolve(configDir, dir)) :
+				[configDir];
 		/* eslint-enable indent */
 		watcher = makeWatcher(watchDirs);
 	}
