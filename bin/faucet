@@ -34,7 +34,6 @@ if(argv.help) {
 	process.exit();
 }
 
-let rootDir = process.cwd();
 let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
 	let value = argv[option];
 	if(value !== undefined) {
@@ -43,13 +42,9 @@ let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
 	return memo;
 }, {});
 
-if(options.watch) {
-	console.error(`monitoring file system at ${rootDir}`);
-
-	if(options.fingerprint !== false) { // for convenience
-		console.error("you might consider using `--no-fingerprint` to avoid " +
-				"littering your file system with obsolete bundles");
-	}
+if(options.watch && options.fingerprint !== false) { // for convenience
+	console.error("you might consider using `--no-fingerprint` to avoid " +
+			"littering your file system with obsolete bundles");
 }
 
-start(rootDir, argv.config, options);
+start(process.cwd(), argv.config, options);

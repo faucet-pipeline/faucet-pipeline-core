@@ -22,6 +22,11 @@ module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line ind
 				watchDirs.map(dir => path.resolve(configDir, dir)) :
 				[configDir];
 		/* eslint-enable indent */
+
+		let separator = watchDirs.length === 1 ? " " : "\n";
+		console.error("monitoring file system at" + separator +
+				watchDirs.join(separator));
+
 		watcher = makeWatcher(watchDirs);
 	}
 
