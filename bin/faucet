@@ -12,7 +12,7 @@ Options:
   -h, --help
     display this help message
   -c, --config
-    configuration file (defaults to \`faucet.js\`)
+    configuration file (defaults to \`faucet.config.js\`)
   -w, --watch
     monitor the file system for changes to recompile automatically
   --no-fingerprint

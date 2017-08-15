@@ -8,7 +8,7 @@ const PLUGINS = {
 	sass: "faucet-pipeline-sass"
 };
 
-module.exports = (rootDir, config = "faucet.js", // eslint-disable-next-line indent
+module.exports = (rootDir, config = "faucet.config.js", // eslint-disable-next-line indent
 		{ watch, fingerprint = true, compact }) => {
 	let configPath = path.resolve(rootDir, config);
 	let configDir = path.dirname(configPath);
