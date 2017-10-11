@@ -5,7 +5,8 @@ let path = require("path");
 
 const PLUGINS = {
 	js: "faucet-pipeline-js",
-	sass: "faucet-pipeline-sass"
+	sass: "faucet-pipeline-sass",
+	static: "faucet-pipeline-static"
 };
 
 module.exports = (rootDir, config = "faucet.config.js", // eslint-disable-next-line indent

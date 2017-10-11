@@ -167,6 +167,9 @@ module.exports = {
     sass: {
       // configuration for faucet-pipeline-sass
     },
+    static: {
+      // configuration for faucet-pipeline-static
+    },
     watchDirs: {
         // configuration for file watching
     }
@@ -178,11 +181,11 @@ only export a `js` option. The pipelines will only be required if you provided
 an option for them. Therefore you would only need to install
 `faucet-pipeline-js` in that case.
 
-Each of the configurations (`js`, `sass`) requires a `manifest` configuration.
-If you don't need a manifest file, set `manifest` to `false`. Otherwise, you
-provide an object with two keys: `file` and `baseURI`. `file` is the path where
-your manifest file should be written (relative to the config file). `baseURI`
-can be either:
+Each of the configurations (`js`, `sass`, `static`) requires a `manifest`
+configuration. If you don't need a manifest file, set `manifest` to `false`.
+Otherwise, you provide an object with two keys: `file` and `baseURI`. `file` is
+the path where your manifest file should be written (relative to the config
+file). `baseURI` can be either:
 
 1. If your `baseURI` is a String, the manifest values will be generated
    like this: `${baseURI}${target}`
@@ -190,7 +193,7 @@ can be either:
    function. The function will be provided with two arguments: `target` and
    `path.basename(target)`.
 
-For example, it could look like this:
+For example, it might look like this:
 
 ```js
 module.exports = {
@@ -207,7 +210,7 @@ module.exports = {
 ### Configuration for `faucet-pipeline-js`
 
 The configuration has to include a `bundles` key with an array. Each entry of
-the array if an object with two keys: `entryPoint` is the file that should be
+the array is an object with two keys: `entryPoint` is the file that should be
 compiled, and `target` is the file that should be created (the path is, of
 course, modified a little when you use fingerprinting). It also has a third,
 optional key `transpiler`. If you provide it, the pipeline will transpile ES201*
@@ -215,7 +218,7 @@ to ES3. You need to provide an object with a `transpiler` key that has an array
 with features that you want to transpile as an argument.
 
 If you for example want to transpile from ES2015 to ES3, your configuration
-could look like this:
+might look like this:
 
 ```js
 module.exports = {
@@ -238,7 +241,7 @@ module.exports = {
 ### Configuration for `faucet-pipeline-sass`
 
 The configuration has to include a `bundles` key with an array. Each entry of
-the array if an object with two keys: `entryPoint` is the file that should be
+the array is an object with two keys: `entryPoint` is the file that should be
 compiled, and `target` is the file that should be created (the path is, of
 course, modified a little when you use fingerprinting).
 
@@ -252,7 +255,7 @@ There are also two optional configurations:
 * `prefixes`: A configuration for the
   [autoprefixer](https://github.com/postcss/autoprefixer).
 
-The resulting configuration could look something like this:
+The resulting configuration might look something like this:
 
 ```js
 module.exports = {
@@ -283,13 +286,36 @@ module.exports = {
 };
 ```
 
+### Configuration for `faucet-pipeline-static`
+
+The configuration has to include a `bundles` key with an array. Each entry of
+the array is an object with two keys: `source` is the folder of files that
+should be copied, and `target` is where the files are copied to.
+
+The resulting configuration might look something like this:
+
+```js
+module.exports = {
+    static: {
+        manifest: {
+            file: "./dist/manifest.json",
+            baseURI: "/assets"
+        },
+        bundles: [{
+            source: "src",
+            target: "dist"
+        }]
+    }
+};
+```
+
 ### Configuration for file watching
 
 You don't need to configure anything for file watching. If you, however, want to
 be gentle your file watching limit and your notebook charge, you might want to
 restrict file watching to certain folders. Per default, it watches the entire
 folder the config file is in. The configuration expects an array of strings. The
-strings are paths relative to your configuration file. It could look like this:
+strings are paths relative to your configuration file. It might look like this:
 
 ```js
 module.exports = {
