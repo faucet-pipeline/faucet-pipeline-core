@@ -27,7 +27,7 @@ typical low-level configuration nightmares.**
     $ npm install faucet-pipeline-js faucet-pipeline-sass
     ```
 
-* configure ([learn more about this file](#config-file)):
+* configure with `faucet.config.js` ([learn more about this file](#config-file)):
 
     ```javascript
     let js = {
@@ -134,8 +134,8 @@ If you've written another adapter, please open a PR to add it to the list.
 ## CLI
 
 If you call the `faucet` command without any arguments, it will default to
-building your project according to the configuration in the file `faucet.js` in
-the current directory. You have the following options:
+building your project according to the configuration in the file
+`faucet.config.js` in the current directory. You have the following options:
 
 * `-c $FILENAME` or `--config=$FILENAME`: Use the file `$FILENAME` as the
   configuration file.
@@ -153,11 +153,11 @@ reduces clutter on your disk) and `--compact` for production.
 
 ## Config File
 
-The config file for faucet is a JavaScript file. In this file, you should export
-an object that contains the configuration. For each pipeline you want to use,
-you need to export an object with the according configuration. In addition, you
-can do some general configuration of the file watcher. So it might look
-something like this:
+The config file (default: `faucet.config.js`) for faucet is a JavaScript file.
+In this file, you should export an object that contains the configuration. For
+each pipeline you want to use, you need to export an object with the according
+configuration. In addition, you can do some general configuration of the file
+watcher. So it might look something like this:
 
 ```js
 module.exports = {
