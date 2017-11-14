@@ -191,7 +191,8 @@ file). `baseURI` can be either:
    like this: `${baseURI}${target}`
 2. If your `baseURI` is a function, it will be the return value of your
    function. The function will be provided with two arguments: `target` and
-   `path.basename(target)`.
+   `path.basename(target)` (except for `faucet-pipeline-static`, where the
+    second argument is the path to the file relative to the target).
 
 For example, it might look like this:
 
