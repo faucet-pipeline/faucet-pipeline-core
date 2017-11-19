@@ -1,6 +1,5 @@
 "use strict";
 
-let makeWatcher = require("nite-owl");
 let path = require("path");
 
 const PLUGINS = {
@@ -17,18 +16,7 @@ module.exports = (rootDir, config = "faucet.config.js", // eslint-disable-next-l
 
 	let watcher;
 	if(watch) {
-		let { watchDirs } = config;
-		/* eslint-disable indent */
-		watchDirs = watchDirs ?
-				watchDirs.map(dir => path.resolve(configDir, dir)) :
-				[configDir];
-		/* eslint-enable indent */
-
-		let separator = watchDirs.length === 1 ? " " : "\n";
-		console.error("monitoring file system at" + separator +
-				watchDirs.join(separator));
-
-		watcher = makeWatcher(watchDirs);
+		watcher = makeWatcher(config.watchDirs, configDir);
 	}
 
 	Object.keys(PLUGINS).forEach(type => {
@@ -50,4 +38,31 @@ function load(pkg) {
 		console.error(`ERROR: missing plugin - please install ${pkg}`);
 		process.exit(1);
 	}
+}
+
+function makeWatcher(watchDirs, configDir) {
+	let niteOwl = require("nite-owl");
+
+	/* eslint-disable indent */
+	watchDirs = watchDirs ?
+			watchDirs.map(dir => path.resolve(configDir, dir)) :
+			[configDir];
+	/* eslint-enable indent */
+
+	let separator = watchDirs.length === 1 ? " " : "\n";
+	console.error("monitoring file system at" + separator + watchDirs.join(separator));
+
+	let watcher = niteOwl(watchDirs);
+	watcher.on("error", err => {
+		if(err.code === "ERR_TOO_MANY_FILES") {
+			console.error("There are too many files being monitored, " +
+					"please use the `watchDirs` configuration setting:\n" +
+					// eslint-disable-next-line max-len
+					"https://github.com/faucet-pipeline/faucet-pipeline#configuration-for-file-watching");
+			process.exit(1);
+		}
+
+		throw err;
+	});
+	return watcher;
 }

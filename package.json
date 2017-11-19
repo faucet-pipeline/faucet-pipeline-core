@@ -24,7 +24,7 @@
 	},
 	"dependencies": {
 		"minimist": "^1.2.0",
-		"nite-owl": "^3.1.0"
+		"nite-owl": "^3.2.0"
 	},
 	"devDependencies": {
 		"eslint": "^4.4.1",
