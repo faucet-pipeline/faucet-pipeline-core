@@ -1,4 +1,5 @@
 # faucet-pipeline
+[![Build Status](https://travis-ci.org/faucet-pipeline/faucet-pipeline.svg?branch=master)](https://travis-ci.org/faucet-pipeline/faucet-pipeline)
 
 **tl;dr: faucet-pipeline is a framework-independent, pluggable asset pipeline
 that takes the pain out of preprocessing JavaScript, CSS and associated files
