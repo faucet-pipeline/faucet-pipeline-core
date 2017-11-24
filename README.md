@@ -1,4 +1,6 @@
 # faucet-pipeline
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/faucet-pipeline/faucet-pipeline.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/faucet-pipeline/faucet-pipeline.svg?branch=master)](https://travis-ci.org/faucet-pipeline/faucet-pipeline)
 
 **tl;dr: faucet-pipeline is a framework-independent, pluggable asset pipeline
