@@ -27,8 +27,8 @@
 		"nite-owl": "^3.2.0"
 	},
 	"devDependencies": {
-		"eslint": "^4.4.1",
+		"eslint": "^4.11.0",
 		"eslint-config-fnd": "^1.2.0",
-		"release-util-fnd": "^1.0.4"
+		"release-util-fnd": "^1.0.7"
 	}
 }
