@@ -24,7 +24,8 @@
 	},
 	"dependencies": {
 		"minimist": "^1.2.0",
-		"nite-owl": "^3.2.0"
+		"nite-owl": "^3.2.0",
+		"faucet-pipeline-util": "^0.10.3"
 	},
 	"devDependencies": {
 		"eslint": "^4.11.0",
