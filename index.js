@@ -2,6 +2,7 @@
 
 let path = require("path");
 let Manifest = require("./lib/manifest");
+let browserslist = require("browserslist");
 
 const PLUGINS = {
 	js: "faucet-pipeline-js",
@@ -20,6 +21,7 @@ module.exports = (rootDir, config = "faucet.config.js", // eslint-disable-next-l
 		watcher = makeWatcher(config.watchDirs, configDir);
 	}
 	let manifest = new Manifest(config.manifest, fingerprint, configDir, !watch);
+	let browsers = browserslist.findConfig(configDir);
 
 	Object.keys(PLUGINS).forEach(type => {
 		let cfg = config[type];
@@ -28,7 +30,7 @@ module.exports = (rootDir, config = "faucet.config.js", // eslint-disable-next-l
 		}
 
 		let plugin = load(PLUGINS[type]);
-		plugin(cfg, configDir, { watcher, compact, manifest });
+		plugin(cfg, configDir, { watcher, compact, manifest, browsers });
 	});
 };
 
