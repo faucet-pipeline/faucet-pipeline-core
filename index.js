@@ -20,7 +20,10 @@ module.exports = (rootDir, config = "faucet.config.js", // eslint-disable-next-l
 	if(watch) {
 		watcher = makeWatcher(config.watchDirs, configDir);
 	}
-	let manifest = new Manifest(config.manifest, fingerprint, configDir, !watch);
+	let manifest = new Manifest(config.manifest, fingerprint, {
+		configDir: configDir,
+		exitOnError: !watch
+	});
 	let browsers = browserslist.findConfig(configDir);
 
 	Object.keys(PLUGINS).forEach(type => {
