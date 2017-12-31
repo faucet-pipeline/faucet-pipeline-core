@@ -2,7 +2,7 @@
 
 let path = require("path");
 
-const PLUGINS = {
+let PLUGINS = {
 	js: "faucet-pipeline-js",
 	sass: "faucet-pipeline-sass",
 	static: "faucet-pipeline-static"

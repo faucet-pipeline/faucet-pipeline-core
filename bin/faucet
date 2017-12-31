@@ -4,7 +4,7 @@
 let start = require("../index");
 let parseArgs = require("minimist");
 
-const HELP = `
+let HELP = `
 Usage:
   $ faucet [options]
 
