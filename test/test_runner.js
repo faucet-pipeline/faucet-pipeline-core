@@ -1,7 +1,7 @@
 /* global describe, it */
 "use strict";
 
-let SerializedRunner = require("../lib/runner");
+let { SerializedRunner } = require("../lib/util");
 let assert = require("assert");
 
 let assertSame = assert.strictEqual;
