@@ -15,12 +15,12 @@
 	"bugs": {
 		"url": "https://github.com/faucet-pipeline/faucet-pipeline/issues"
 	},
-	"main": "index.js",
+	"main": "lib/index.js",
 	"bin": {
 		"faucet": "bin/faucet"
 	},
 	"scripts": {
-		"test": "eslint --cache *.js bin/* && echo ✓"
+		"test": "eslint --cache *.js lib bin/* && echo ✓"
 	},
 	"dependencies": {
 		"minimist": "^1.2.0",
