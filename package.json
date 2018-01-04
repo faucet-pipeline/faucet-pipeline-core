@@ -20,8 +20,8 @@
 		"faucet": "bin/faucet"
 	},
 	"scripts": {
-		"test": "npm-run-all --parallel lint tests",
-		"tests": "mocha test/test_*.js",
+		"test": "npm-run-all --parallel lint test:unit",
+		"test:unit": "mocha test/test_*.js",
 		"lint": "eslint --cache *.js lib bin/* test && echo ✓"
 	},
 	"dependencies": {
