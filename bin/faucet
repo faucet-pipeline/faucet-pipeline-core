@@ -16,8 +16,8 @@ Options:
     configuration file (defaults to ${repr("faucet.config.js")})
   -w, --watch
     monitor the file system for changes to recompile automatically
-  --no-fingerprint
-    supppress fingerprint hash in resulting files
+  --fingerprint
+    add unique hash to file names
   --compact
     reduce output size (e.g. via minification)
 `.trim();
@@ -43,9 +43,10 @@ let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
 	return memo;
 }, {});
 
-if(options.watch && options.fingerprint !== false) { // for convenience
-	console.error("you might consider using `--no-fingerprint` to avoid " +
-			"littering your file system with obsolete bundles");
+if(options.watch && options.fingerprint) { // for convenience
+	console.error("you might consider disabling fingerprinting " +
+			`(${repr("--no-fingerprint")}) in watch mode to avoid littering ` +
+			"your file system with obsolete bundles");
 }
 
 start(process.cwd(), argv.config, options);
