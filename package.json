@@ -24,10 +24,10 @@
 	},
 	"dependencies": {
 		"minimist": "^1.2.0",
-		"nite-owl": "^3.2.0"
+		"nite-owl": "^3.3.0"
 	},
 	"devDependencies": {
-		"eslint": "^4.11.0",
+		"eslint": "^4.14.0",
 		"eslint-config-fnd": "^1.2.0",
 		"release-util-fnd": "^1.0.7"
 	}

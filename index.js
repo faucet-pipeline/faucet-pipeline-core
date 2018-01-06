@@ -49,9 +49,6 @@ function makeWatcher(watchDirs, configDir) {
 			[configDir];
 	/* eslint-enable indent */
 
-	let separator = watchDirs.length === 1 ? " " : "\n";
-	console.error("monitoring file system at" + separator + watchDirs.join(separator));
-
 	let watcher = niteOwl(watchDirs);
 	watcher.on("error", err => {
 		if(err.code === "ERR_TOO_MANY_FILES") {
