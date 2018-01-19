@@ -23,6 +23,7 @@
 		"test": "eslint --cache *.js lib bin/* && echo ✓"
 	},
 	"dependencies": {
+		"browserslist": "^2.9.1",
 		"minimist": "^1.2.0",
 		"nite-owl": "^3.3.0"
 	},
