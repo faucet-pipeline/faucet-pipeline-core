@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-let start = require("../index");
+let start = require("../lib/index");
 let parseArgs = require("minimist");
 
 let HELP = `
@@ -15,8 +15,8 @@ Options:
     configuration file (defaults to \`faucet.config.js\`)
   -w, --watch
     monitor the file system for changes to recompile automatically
-  --no-fingerprint
-    supppress fingerprint hash in resulting files
+  --fingerprint
+    add fingerprint hash to file names
   --compact
     reduce output size (e.g. via minification)
 `.trim();
@@ -41,10 +41,5 @@ let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
 	}
 	return memo;
 }, {});
-
-if(options.watch && options.fingerprint !== false) { // for convenience
-	console.error("you might consider using `--no-fingerprint` to avoid " +
-			"littering your file system with obsolete bundles");
-}
 
 start(process.cwd(), argv.config, options);

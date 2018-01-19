@@ -15,14 +15,15 @@
 	"bugs": {
 		"url": "https://github.com/faucet-pipeline/faucet-pipeline/issues"
 	},
-	"main": "index.js",
+	"main": "lib/index.js",
 	"bin": {
 		"faucet": "bin/faucet"
 	},
 	"scripts": {
-		"test": "eslint --cache *.js bin/* && echo ✓"
+		"test": "eslint --cache *.js lib bin/* && echo ✓"
 	},
 	"dependencies": {
+		"browserslist": "^2.9.1",
 		"minimist": "^1.2.0",
 		"nite-owl": "^3.3.0"
 	},
