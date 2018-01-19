@@ -23,6 +23,8 @@
 		"test": "eslint --cache *.js bin/* && echo ✓"
 	},
 	"dependencies": {
+		"browserslist": "^2.9.1",
+		"faucet-pipeline-util": "^0.10.3",
 		"minimist": "^1.2.0",
 		"nite-owl": "^3.3.0"
 	},
