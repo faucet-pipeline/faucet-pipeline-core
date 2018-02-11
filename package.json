@@ -25,7 +25,7 @@
 		"lint": "eslint --cache *.js lib bin/* test && echo ✓"
 	},
 	"dependencies": {
-		"browserslist": "^2.11.3",
+		"browserslist": "^3.0.0",
 		"minimist": "^1.2.0",
 		"nite-owl": "^3.3.1"
 	},
