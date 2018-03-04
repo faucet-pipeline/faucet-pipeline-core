@@ -1,52 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
-let start = require("../lib/index");
-let { repr } = require("../lib/util");
-let parseArgs = require("minimist");
+let faucet = require("../lib");
+let parseCLI = require("../lib/cli");
 
-let HELP = `
-Usage:
-  $ faucet [options]
-
-Options:
-  -h, --help
-    display this help message
-  -c, --config
-    configuration file (defaults to ${repr("faucet.config.js")})
-  -w, --watch
-    monitor the file system for changes to recompile automatically
-  --fingerprint
-    add unique hash to file names
-  --compact
-    reduce output size (e.g. via minification)
-`.trim();
-
-let argv = parseArgs(process.argv.slice(2), {
-	alias: {
-		c: "config",
-		w: "watch",
-		h: "help"
-	}
-});
-
-if(argv.help) {
-	console.log(HELP); // eslint-disable-line no-console
-	process.exit();
-}
-
-let options = ["watch", "fingerprint", "compact"].reduce((memo, option) => {
-	let value = argv[option];
-	if(value !== undefined) {
-		memo[option] = value;
-	}
-	return memo;
-}, {});
-
-if(options.watch && options.fingerprint) { // for convenience
-	console.error("you might consider disabling fingerprinting " +
-			`(${repr("--no-fingerprint")}) in watch mode to avoid littering ` +
-			"your file system with obsolete bundles");
-}
-
-start(process.cwd(), argv.config, options);
+let { rootDir, config, options } = parseCLI();
+faucet(rootDir, config, options);
