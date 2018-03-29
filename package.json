@@ -10,7 +10,7 @@
 	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/faucet-pipeline/faucet-pipeline"
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline.git"
 	},
 	"bugs": {
 		"url": "https://github.com/faucet-pipeline/faucet-pipeline/issues"
