@@ -4,5 +4,5 @@
 let faucet = require("../lib");
 let parseCLI = require("../lib/cli");
 
-let { rootDir, config, options } = parseCLI();
-faucet(rootDir, config, options);
+let { referenceDir, config, options } = parseCLI();
+faucet(referenceDir, config, options);
