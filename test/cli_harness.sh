@@ -46,18 +46,6 @@ function assert_missing {
 	fi
 }
 
-# ensures the second file is smaller than the first file
-function assert_smaller_size {
-	original=$(wc -c < "${1:?}")
-	result=$(wc -c < "${2:?}")
-
-	if [ $(bc <<< "$result < $original") != 1 ]; then
-		fail "file \`$2\` is not smaller than \`$1\`"
-	else
-		true
-	fi
-}
-
 function fail {
 	msg="${1:?}"
 
