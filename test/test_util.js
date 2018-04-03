@@ -71,7 +71,7 @@ describe("FileFinder", _ => {
 		});
 	});
 
-	it("matches given files", () => {
+	it("matches given files", done => {
 		let fixturePath = path.resolve("test/fixtures");
 		let fileFinder = new FileFinder(fixturePath);
 		let foo = [
@@ -80,25 +80,29 @@ describe("FileFinder", _ => {
 			path.resolve("test/other/something.js")
 		];
 
-		let allFiles = fileFinder.match(foo);
-		assertDeepEqual(allFiles, [
-			"dummy/index.js",
-			"something.js"
-		]);
+		fileFinder.match(foo).then(allFiles => {
+			assertDeepEqual(allFiles, [
+				"dummy/index.js",
+				"something.js"
+			]);
+			done();
+		});
 	});
 
-	it("matches given files without dotfiles", () => {
+	it("matches given files without dotfiles", done => {
 		let fixturePath = path.resolve("test/fixtures");
 		let fileFinder = new FileFinder(fixturePath, { skipDotfiles: true });
 		let foo = [
 			path.resolve("test/fixtures/.secret")
 		];
 
-		let allFiles = fileFinder.match(foo);
-		assertDeepEqual(allFiles, []);
+		fileFinder.match(foo).then(allFiles => {
+			assertDeepEqual(allFiles, []);
+			done();
+		});
 	});
 
-	it("matches given files without dotfiles", () => {
+	it("matches given files without dotfiles", done => {
 		let fixturePath = path.resolve("test/fixtures");
 		let fileFinder = new FileFinder(fixturePath, {
 			filter: filename => path.basename(filename) === "index.js"
@@ -108,7 +112,9 @@ describe("FileFinder", _ => {
 			path.resolve("test/fixtures/something.js")
 		];
 
-		let allFiles = fileFinder.match(foo);
-		assertDeepEqual(allFiles, [ "index.js" ]);
+		fileFinder.match(foo).then(allFiles => {
+			assertDeepEqual(allFiles, [ "index.js" ]);
+			done();
+		});
 	});
 });
