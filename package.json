@@ -25,14 +25,14 @@
 		"lint": "eslint --cache *.js lib bin/* test && echo ✓"
 	},
 	"dependencies": {
-		"browserslist": "^3.2.4",
+		"browserslist": "^3.2.6",
 		"minimist": "^1.2.0",
 		"mkdirp": "^0.5.1",
 		"nite-owl": "^3.3.1"
 	},
 	"devDependencies": {
 		"eslint-config-fnd": "^1.3.0",
-		"mocha": "^5.0.5",
+		"mocha": "^5.1.1",
 		"npm-run-all": "^4.1.2",
 		"release-util-fnd": "^1.1.1"
 	}
