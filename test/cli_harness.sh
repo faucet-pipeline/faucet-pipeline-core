@@ -66,7 +66,7 @@ function assert_identical_sourcemap {
 	# decode and clean the inline source map
 	#  source maps contain system-dependent information (full paths)
 	#  so we drop all information we're not explicitly testing
-	node -r "$root/../node_modules/faucet-pipeline/lib/util/extract-sourcemap" -e "extractSourcemap('$actual.orig', ['version', 'names', 'mappings', 'sourcesContent'])" -p > "$actual.map"
+	extract-sourcemap "$actual.orig" version names mappings sourcesContent > "$actual.map"
 
 	assert_identical "$actual" "$expected_src"
 	assert_json "$actual.map" "$expected_map"
