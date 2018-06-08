@@ -69,3 +69,23 @@ function fail {
 	echo; echo "FAILURE: $msg"
 	false
 }
+
+# compares two files and the inline source map
+function assert_identical_sourcemap {
+	actual="${1:?}"
+	expected_src="${2:?}"
+	expected_map="${3:?}"
+
+	# save the original file
+	mv "$actual" "$actual.orig"
+	# drop the inline source map
+	sed '\!sourceMappingURL!d' <"$actual.orig" >"$actual"
+	# decode and clean the inline source map
+	#  source maps contain system-dependent information (full paths)
+	#  so we drop all information we're not explicitly testing
+	extract-sourcemap "$actual.orig" version names mappings sourcesContent > "$actual.map"
+
+	assert_identical "$actual" "$expected_src"
+	assert_json "$actual.map" "$expected_map"
+}
+

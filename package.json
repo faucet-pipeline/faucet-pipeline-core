@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"browserslist": "^3.2.7",
+		"extract-sourcemap": "^1.0.0",
 		"minimist": "^1.2.0",
 		"mkdirp": "^0.5.1",
 		"nite-owl": "^3.3.1"
