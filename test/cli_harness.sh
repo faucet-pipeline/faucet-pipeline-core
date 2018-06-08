@@ -16,6 +16,23 @@ function end {
 	popd > /dev/null
 }
 
+# compares two files along with the corresponding source map
+function assert_identical_sourcemap {
+	actual="${1:?}"
+	expected_src="${2:?}"
+	expected_map="${3:?}"
+
+	mv "$actual" "$actual.orig"
+	# discard source map for source-only comparison
+	sed '\!sourceMappingURL!d' < "$actual.orig" > "$actual"
+	# limit source map to relevant properties (opaque, content-agnostic
+	# comparison is not an option due to system-specific file paths)
+	extract-sourcemap "$actual.orig" version names mappings sourcesContent > "$actual.map"
+
+	assert_identical "$actual" "$expected_src"
+	assert_json "$actual.map" "$expected_map"
+}
+
 # compares two JSON files
 function assert_json {
 	actual="${1:?}"
