@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline",
-	"version": "1.0.0-rc.5",
+	"version": "1.0.0-rc.6",
 	"description": "front-end asset pipeline",
 	"author": "FND",
 	"contributors": [
