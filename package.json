@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline",
-	"version": "1.0.0-rc.6",
+	"version": "1.0.0-rc.7",
 	"description": "front-end asset pipeline",
 	"author": "FND",
 	"contributors": [
@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"browserslist": "^3.2.7",
+		"extract-sourcemap": "^2.0.0",
 		"minimist": "^1.2.0",
 		"mkdirp": "^0.5.1",
 		"nite-owl": "^3.3.1"
