@@ -22,11 +22,10 @@
 	"scripts": {
 		"test": "npm-run-all --parallel lint test:unit",
 		"test:unit": "mocha test/test_*.js",
-		"lint": "eslint --cache lib bin/* test && echo ✓"
+		"lint": "eslint --cache lib bin/* test test/bin/* && echo ✓"
 	},
 	"dependencies": {
 		"browserslist": "^4.0.0",
-		"extract-sourcemap": "^2.0.0",
 		"minimist": "^1.2.0",
 		"mkdirp": "^0.5.1",
 		"nite-owl": "^3.3.1"
