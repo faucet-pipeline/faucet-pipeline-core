@@ -1,19 +1,19 @@
 {
-	"name": "faucet-pipeline",
-	"version": "1.0.0-rc.7",
+	"name": "faucet-pipeline-core",
+	"version": "1.0.0-rc.8",
 	"description": "front-end asset pipeline",
 	"author": "FND",
 	"contributors": [
 		"Lucas Dohmen <lucas.dohmen@innoq.com>"
 	],
 	"license": "Apache-2.0",
-	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline",
+	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline-core",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/faucet-pipeline/faucet-pipeline.git"
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline-core.git"
 	},
 	"bugs": {
-		"url": "https://github.com/faucet-pipeline/faucet-pipeline/issues"
+		"url": "https://github.com/faucet-pipeline/faucet-pipeline-core/issues"
 	},
 	"main": "lib/index.js",
 	"bin": {
