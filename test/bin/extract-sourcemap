@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+"use strict";
+
+let { readFileSync } = require("fs");
+
+let URL_PATTERN = /sourceMappingURL=data:(\S+)/;
+let MAP_PATTERN = /;base64,(\S+)$/;
+
+let [name, ...attributes] = process.argv.splice(2);
+if(!name) {
+	console.error("missing file name");
+	process.exit(1);
+}
+
+let source = readFileSync(name);
+let sourcemap = extractSourcemap(source, attributes);
+console.log(JSON.stringify(sourcemap)); // eslint-disable-line no-console
+
+function extractSourcemap(source, attributes) {
+	let url = firstMatchedGroup(URL_PATTERN, source);
+	let map = firstMatchedGroup(MAP_PATTERN, url);
+	if(!map) {
+		throw new Error("no source map found");
+	}
+	let sourceMapBuffer = Buffer.from(map, "base64");
+	let sourceMap = JSON.parse(sourceMapBuffer);
+	Object.keys(sourceMap).
+		filter(key => !attributes.includes(key)).
+		forEach(key => delete sourceMap[key]);
+	return sourceMap;
+}
+
+function firstMatchedGroup(regex, data) {
+	let matches = regex.exec(data);
+	if(!matches) {
+		return null;
+	}
+	return matches[1];
+}

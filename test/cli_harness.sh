@@ -1,5 +1,9 @@
 set -euo pipefail
 
+bindir="$BASH_SOURCE"
+bindir=`dirname "$bindir"`
+bindir=`realpath "$bindir/bin"`
+
 # enters test directory
 function begin {
 	test_dir="${1:?}"
@@ -27,7 +31,8 @@ function assert_identical_sourcemap {
 	sed '\!sourceMappingURL!d' < "$actual.orig" > "$actual"
 	# limit source map to relevant properties (opaque, content-agnostic
 	# comparison is not an option due to system-specific file paths)
-	extract-sourcemap "$actual.orig" version names mappings sourcesContent > "$actual.map"
+	"$bindir/extract-sourcemap" "$actual.orig" version names mappings \
+			sourcesContent > "$actual.map"
 
 	assert_identical "$actual" "$expected_src"
 	assert_json "$actual.map" "$expected_map"
