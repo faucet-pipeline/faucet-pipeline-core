@@ -2,7 +2,7 @@ set -euo pipefail
 
 bindir="$BASH_SOURCE"
 bindir=`dirname "$bindir"`
-bindir=`realpath "$bindir/bin"`
+bindir=`node -r fs -p "fs.realpathSync(process.argv[1]);" "$bindir/bin"`
 
 # enters test directory
 function begin {
