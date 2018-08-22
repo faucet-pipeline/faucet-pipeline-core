@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline-core",
-	"version": "1.0.0-rc.11",
+	"version": "1.0.0-rc.12",
 	"description": "front-end asset pipeline",
 	"author": "FND",
 	"contributors": [
