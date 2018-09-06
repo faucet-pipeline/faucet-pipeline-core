@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline-core",
-	"version": "1.0.0-rc.12",
+	"version": "1.0.0-rc.13",
 	"description": "front-end asset pipeline",
 	"author": "FND",
 	"contributors": [
@@ -28,7 +28,7 @@
 		"browserslist": "^4.0.2",
 		"minimist": "^1.2.0",
 		"mkdirp": "^0.5.1",
-		"nite-owl": "^3.3.1"
+		"nite-owl": "^3.3.2"
 	},
 	"devDependencies": {
 		"eslint-config-fnd": "^1.6.0",
