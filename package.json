@@ -1,13 +1,13 @@
 {
 	"name": "faucet-pipeline-core",
-	"version": "1.0.0-rc.13",
-	"description": "front-end asset pipeline",
+	"version": "1.0.0",
+	"description": "faucet-pipeline's core library",
 	"author": "FND",
 	"contributors": [
 		"Lucas Dohmen <lucas.dohmen@innoq.com>"
 	],
 	"license": "Apache-2.0",
-	"homepage": "https://github.com/faucet-pipeline/faucet-pipeline-core",
+	"homepage": "https://www.faucet-pipeline.org",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/faucet-pipeline/faucet-pipeline-core.git"
@@ -25,10 +25,10 @@
 		"lint": "eslint --cache lib bin/* test test/bin/* && echo ✓"
 	},
 	"dependencies": {
-		"browserslist": "^4.0.2",
-		"minimist": "^1.2.0",
-		"mkdirp": "^0.5.1",
-		"nite-owl": "^3.3.2"
+		"browserslist": "~4.1.1",
+		"minimist": "~1.2.0",
+		"mkdirp": "~0.5.1",
+		"nite-owl": "~3.3.2"
 	},
 	"devDependencies": {
 		"eslint-config-fnd": "^1.6.0",
