@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline-core",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "faucet-pipeline's core library",
 	"author": "FND",
 	"contributors": [
