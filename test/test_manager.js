@@ -8,10 +8,12 @@ let assert = require("assert");
 let assertSame = assert.strictEqual;
 
 describe("asset manager", _ => {
+	let root = path.resolve(__dirname, "fixtures");
 	let cwd;
 
 	before(() => {
 		cwd = process.cwd();
+		process.chdir(root);
 	});
 
 	after(() => {
@@ -19,9 +21,6 @@ describe("asset manager", _ => {
 	});
 
 	it("resolves file paths for local modules and third-party packages", () => {
-		let root = path.resolve(__dirname, "fixtures");
-		process.chdir(root);
-
 		let { resolvePath } = new AssetManager(root);
 
 		let filepath = resolvePath("dummy/src.js");
