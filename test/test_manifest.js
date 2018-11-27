@@ -24,19 +24,19 @@ describe("manifest", _ => {
 		let manifest = new Manifest(root);
 		return manifest.set("foo.png", "foo-abc123.png").
 			then(_ => { // eslint-disable-next-line quotes
-				assertSame(manifest.toJSON(), `{"foo.png":"/foo-abc123.png"}\n`);
+				assertSame(JSON.stringify(manifest), `{"foo.png":"/foo-abc123.png"}`);
 
 				return manifest.set("bar.css", "bar-def456.css");
 			}).
 			then(_ => {
-				assertSame(manifest.toJSON(), // eslint-disable-next-line quotes
-						`{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}\n`);
+				assertSame(JSON.stringify(manifest), // eslint-disable-next-line quotes
+						`{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}`);
 
 				return manifest.set("xox.js", "xox-ghi789.js");
 			}).
 			then(_ => {
-				assertSame(manifest.toJSON(), // eslint-disable-next-line quotes
-						`{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}\n`);
+				assertSame(JSON.stringify(manifest), // eslint-disable-next-line quotes
+						`{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}`);
 			});
 	});
 });
