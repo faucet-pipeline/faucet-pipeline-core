@@ -28,7 +28,7 @@
 		"browserslist": "~4.3.4",
 		"minimist": "~1.2.0",
 		"mkdirp": "~0.5.1",
-		"nite-owl": "~3.3.2"
+		"nite-owl": "~5.0.0"
 	},
 	"devDependencies": {
 		"eslint-config-fnd": "^1.6.0",
