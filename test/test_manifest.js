@@ -23,20 +23,20 @@ describe("manifest", _ => {
 	it("maps original to actual file names with deterministic serialization", () => {
 		let manifest = new Manifest(root);
 		return manifest.set("foo.png", "foo-abc123.png").
-			then(_ => { // eslint-disable-next-line quotes
-				assertSame(JSON.stringify(manifest), `{"foo.png":"/foo-abc123.png"}`);
+			then(_ => {
+				assertSame(JSON.stringify(manifest), '{"foo.png":"/foo-abc123.png"}');
 
 				return manifest.set("bar.css", "bar-def456.css");
 			}).
 			then(_ => {
-				assertSame(JSON.stringify(manifest), // eslint-disable-next-line quotes
-						`{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}`);
+				assertSame(JSON.stringify(manifest),
+						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}');
 
 				return manifest.set("xox.js", "xox-ghi789.js");
 			}).
 			then(_ => {
-				assertSame(JSON.stringify(manifest), // eslint-disable-next-line quotes
-						`{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}`);
+				assertSame(JSON.stringify(manifest), // eslint-disable-next-line max-len
+						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}');
 			});
 	});
 });
