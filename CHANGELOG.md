@@ -1,6 +1,33 @@
 faucet-pipeline-core version history
 ====================================
 
+v1.2.2
+------
+
+_2019-06-17_
+
+changes for end users:
+
+* update browserslist
+
+v1.2.1
+------
+
+_2019-05-02_
+
+changes for end users:
+
+* dropped support for Node 6
+* improve handling of boolean CLI arguments
+* update browserslist and nite-owl
+* offer a `--serve` and `--liveserve` CLI option to serve the generated files
+  via HTTP
+
+improvements for developers:
+
+* update mocha
+* expose the `webRoot` in the manifest
+
 
 v1.2.0
 ------

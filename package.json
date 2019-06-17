@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline-core",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "faucet-pipeline's core library",
 	"author": "FND",
 	"contributors": [
@@ -28,7 +28,7 @@
 		"node": ">=8"
 	},
 	"dependencies": {
-		"browserslist": "~4.5.6",
+		"browserslist": "~4.6.2",
 		"minimist": "~1.2.0",
 		"mkdirp": "~0.5.1",
 		"nite-owl": "~5.0.3"
