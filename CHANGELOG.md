@@ -1,32 +1,27 @@
 faucet-pipeline-core version history
 ====================================
 
-v1.2.2
+
+v1.3.0
 ------
 
-_2019-06-17_
+_2019-09-02_
 
-changes for end users:
+(this version was erroneously released as v1.2.x before, violating semantic
+versioning)
 
-* update browserslist
-
-v1.2.1
-------
-
-_2019-05-02_
-
-changes for end users:
+notable changes for end users:
 
 * dropped support for Node 6
-* improve handling of boolean CLI arguments
-* update browserslist and nite-owl
-* offer a `--serve` and `--liveserve` CLI option to serve the generated files
+* path resolution now expects non-relative paths (e.g. `my-lib/util.js`) to
+  reside within `node_modules`
+* added `--serve` and `--liveserve` CLI options to serve the generated files
   via HTTP
+* improved handling of boolean CLI arguments
 
-improvements for developers:
+notable changes for developers:
 
-* update mocha
-* expose the `webRoot` in the manifest
+* exposed `webRoot` in `Manifest`
 
 
 v1.2.0
@@ -34,14 +29,14 @@ v1.2.0
 
 _2018-11-29_
 
-improvements for end users:
+notable changes for end users:
 
 * ensured parent paths (i.e. `../`) are permitted where configuration expects
   relative paths
 * ensured consistent manifest representation, avoiding changes due to arbitrary
   ordering
 
-improvements for developers:
+notable changes for developers:
 
 * added `loadExtension` utility function to prompt for installation of missing
   packages
@@ -54,10 +49,10 @@ v1.1.0
 
 _2018-10-23_
 
-improvements for end users:
+notable changes for end users:
 
 * `manifest.target` is now optional, defaulting to an in-memory manifest
 
-improvements for developers:
+notable changes for developers:
 
 * added `resolvePath` utility function
