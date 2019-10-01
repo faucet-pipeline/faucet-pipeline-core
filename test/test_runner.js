@@ -2,9 +2,7 @@
 "use strict";
 
 let SerializedRunner = require("../lib/util/runner");
-let assert = require("assert");
-
-let assertSame = assert.strictEqual;
+let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("assert");
 
 describe("watch mode", _ => {
 	it("avoids concurrent compilation, queueing recompilation", () => {
@@ -13,9 +11,12 @@ describe("watch mode", _ => {
 		bundle.compile(); // starts compilation
 		bundle.compile(); // queues recompilation
 		bundle.compile(); // skipped due to queue limit
+		let prevLog; // keeps track of compilation sequence
 		return bundle.compile(). // skipped due to queue limit
 			then(_ => {
-				assertSame(bundle.executionCount, 2); // compiled, then recompiled once
+				let log = bundle.executionLog;
+				assertSame(log.length, 2); // compiled, then recompiled once
+				prevLog = [].concat(log);
 
 				bundle.compile(); // starts compilation
 				bundle.compile(); // queues recompilation
@@ -23,34 +24,43 @@ describe("watch mode", _ => {
 				return bundle.compile(); // skipped due to queue limit
 			}).
 			then(_ => {
-				assertSame(bundle.executionCount, 4); // compiled, then recompiled once
+				let log = bundle.executionLog;
+				assertSame(log.length, 4); // compiled, then recompiled once
+				assertDeep(log.slice(0, prevLog.length), prevLog);
+				prevLog = [].concat(bundle.executionLog);
 
 				return bundle.compile(); // starts compilation
 			}).
 			then(_ => {
-				assertSame(bundle.executionCount, 5);
+				let log = bundle.executionLog;
+				assertSame(log.length, 5);
+				assertDeep(log.slice(0, prevLog.length), prevLog);
+				prevLog = [].concat(bundle.executionLog);
 			});
 	});
 });
 
 class MockBundle {
 	constructor() {
-		this.executionCount = 0;
+		this.executionLog = [];
 	}
 
 	compile() {
+		let id = Math.random();
 		if(this._runner) {
-			return this._runner.rerun();
+			return this._runner.rerun(id);
 		}
 
-		this._runner = new SerializedRunner(_ => this._compile());
-		return this._runner.run();
+		this._runner = new SerializedRunner(id => this._compile(id));
+		return this._runner.run(id);
 	}
 
-	_compile() {
+	_compile(id) {
 		return wait(1).
 			then(_ => {
-				this.executionCount++;
+				if(id) {
+					this.executionLog.push(id);
+				}
 			});
 	}
 }
