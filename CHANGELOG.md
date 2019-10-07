@@ -2,6 +2,19 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.3.1
+------
+
+_2019-10-07_
+
+notable changes for end users:
+
+* fixed concurrent compilation
+* fixed host/port handling for `--server` and `--liveserve`
+
+no significant changes for developers
+
+
 v1.3.0
 ------
 
