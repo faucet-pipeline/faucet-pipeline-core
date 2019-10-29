@@ -5,7 +5,7 @@ faucet-pipeline-core version history
 v1.3.2
 ------
 
-_2019-10-27_
+_2019-10-29_
 
 notable changes for end users:
 
