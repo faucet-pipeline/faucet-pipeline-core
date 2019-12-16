@@ -38,7 +38,14 @@ describe("FileFinder", _ => {
 					"dummy/index.js",
 					"dummy/src.js",
 					"node_modules/dummy/index.js",
-					"node_modules/dummy/pkg.js"
+					"node_modules/dummy/pkg.js",
+					"node_modules/faucet-pipeline-dummy/index.js",
+					"node_modules/faucet-pipeline-invalid-a/index.js",
+					"node_modules/faucet-pipeline-invalid-b/index.js",
+					"node_modules/faucet-pipeline-invalid-c/index.js",
+					"node_modules/faucet-pipeline-js/index.js",
+					"node_modules/faucet-pipeline-sass/index.js",
+					"node_modules/faucet-pipeline-static/index.js"
 				]);
 			});
 	});
@@ -53,7 +60,14 @@ describe("FileFinder", _ => {
 					"dummy/index.js",
 					"dummy/src.js",
 					"node_modules/dummy/index.js",
-					"node_modules/dummy/pkg.js"
+					"node_modules/dummy/pkg.js",
+					"node_modules/faucet-pipeline-dummy/index.js",
+					"node_modules/faucet-pipeline-invalid-a/index.js",
+					"node_modules/faucet-pipeline-invalid-b/index.js",
+					"node_modules/faucet-pipeline-invalid-c/index.js",
+					"node_modules/faucet-pipeline-js/index.js",
+					"node_modules/faucet-pipeline-sass/index.js",
+					"node_modules/faucet-pipeline-static/index.js"
 				]);
 			});
 	});
@@ -67,7 +81,14 @@ describe("FileFinder", _ => {
 			then(allFiles => {
 				assertDeep(allFiles, [
 					"dummy/index.js",
-					"node_modules/dummy/index.js"
+					"node_modules/dummy/index.js",
+					"node_modules/faucet-pipeline-dummy/index.js",
+					"node_modules/faucet-pipeline-invalid-a/index.js",
+					"node_modules/faucet-pipeline-invalid-b/index.js",
+					"node_modules/faucet-pipeline-invalid-c/index.js",
+					"node_modules/faucet-pipeline-js/index.js",
+					"node_modules/faucet-pipeline-sass/index.js",
+					"node_modules/faucet-pipeline-static/index.js"
 				]);
 			});
 	});
@@ -98,7 +119,7 @@ describe("FileFinder", _ => {
 			});
 	});
 
-	it("matches given files without dotfiles", () => {
+	it("matches given files with custom finder", () => {
 		let fileFinder = new FileFinder(FIXTURES_PATH, {
 			filter: filename => path.basename(filename) === "index.js"
 		});
