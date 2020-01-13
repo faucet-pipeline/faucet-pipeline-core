@@ -25,7 +25,7 @@
 		"lint": "eslint --cache lib bin/* test test/bin/* && echo ✓"
 	},
 	"engines": {
-		"node": ">=8"
+		"node": ">=10"
 	},
 	"dependencies": {
 		"browserslist": "~4.7.2",
