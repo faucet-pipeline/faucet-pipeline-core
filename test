@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -eu
+
+root_dir=`dirname $0`
+root_dir=`node -r fs -p "fs.realpathSync(process.argv[1]);" "$root_dir"`
+
+filepath="$root_dir/index.js"
+alt_dir="/tmp"
+
+echo "project directory: $root_dir"
+
+echo "moving to $alt_dir"
+cd "$alt_dir"
+node "$filepath" "$root_dir"
