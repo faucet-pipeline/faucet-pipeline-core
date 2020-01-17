@@ -99,6 +99,46 @@ describe("plugin registration", _ => {
 			markup: []
 		});
 	});
+
+	it("ensures backwards compatibility", () => {
+		let res = pluginsByBucket({
+			dummy: [{ foo: "lorem" }],
+			plugins: {
+				dummy: {
+					bucket: "static",
+					plugin: path.resolve(CUSTOM_NODE_PATH, "faucet-pipeline-dummy")
+				}
+			}
+		});
+		assertDeep(normalizeAll(res), {
+			static: [{
+				plugin: "<Function faucetDummy>",
+				config: [{ foo: "lorem" }]
+			}],
+			scripts: [],
+			styles: [],
+			markup: []
+		});
+
+		res = pluginsByBucket({
+			legacy: [{ bar: "ipsum" }],
+			plugins: {
+				legacy: {
+					bucket: "static",
+					plugin: path.resolve(CUSTOM_NODE_PATH, "faucet-pipeline-legacy")
+				}
+			}
+		});
+		assertDeep(normalizeAll(res), {
+			static: [{
+				plugin: "<Function faucetLegacy>",
+				config: [{ bar: "ipsum" }]
+			}],
+			scripts: [],
+			styles: [],
+			markup: []
+		});
+	});
 });
 
 describe("plugin resolution", _ => {

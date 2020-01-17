@@ -44,6 +44,7 @@ describe("FileFinder", _ => {
 					"node_modules/faucet-pipeline-invalid-b/index.js",
 					"node_modules/faucet-pipeline-invalid-c/index.js",
 					"node_modules/faucet-pipeline-js/index.js",
+					"node_modules/faucet-pipeline-legacy/index.js",
 					"node_modules/faucet-pipeline-sass/index.js",
 					"node_modules/faucet-pipeline-static/index.js"
 				]);
@@ -66,6 +67,7 @@ describe("FileFinder", _ => {
 					"node_modules/faucet-pipeline-invalid-b/index.js",
 					"node_modules/faucet-pipeline-invalid-c/index.js",
 					"node_modules/faucet-pipeline-js/index.js",
+					"node_modules/faucet-pipeline-legacy/index.js",
 					"node_modules/faucet-pipeline-sass/index.js",
 					"node_modules/faucet-pipeline-static/index.js"
 				]);
@@ -87,6 +89,7 @@ describe("FileFinder", _ => {
 					"node_modules/faucet-pipeline-invalid-b/index.js",
 					"node_modules/faucet-pipeline-invalid-c/index.js",
 					"node_modules/faucet-pipeline-js/index.js",
+					"node_modules/faucet-pipeline-legacy/index.js",
 					"node_modules/faucet-pipeline-sass/index.js",
 					"node_modules/faucet-pipeline-static/index.js"
 				]);
