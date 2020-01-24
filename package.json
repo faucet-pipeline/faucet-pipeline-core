@@ -30,7 +30,7 @@
 	"dependencies": {
 		"browserslist": "~4.7.2",
 		"minimist": "~1.2.0",
-		"mkdirp": "~0.5.1",
+		"mkdirp": "~1.0.0",
 		"nite-owl": "~5.0.4"
 	},
 	"devDependencies": {
