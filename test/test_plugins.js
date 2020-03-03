@@ -101,7 +101,25 @@ describe("plugin registration", _ => {
 	});
 
 	it("ensures backwards compatibility", () => {
+		let defaults = [{
+			key: "legacy",
+			bucket: "static",
+			plugin: path.resolve(CUSTOM_NODE_PATH, "faucet-pipeline-legacy")
+		}];
 		let res = pluginsByBucket({
+			legacy: [{ foo: "lorem" }]
+		}, defaults);
+		assertDeep(normalizeAll(res), {
+			static: [{
+				plugin: "<Function faucetLegacy>",
+				config: [{ foo: "lorem" }]
+			}],
+			scripts: [],
+			styles: [],
+			markup: []
+		});
+
+		res = pluginsByBucket({
 			dummy: [{ foo: "lorem" }],
 			plugins: {
 				dummy: {
@@ -295,6 +313,8 @@ function normalizeAll(pluginsByBucket) {
 // serializes plugin functions for comparison purposes
 function normalizePlugins(obj) {
 	Object.entries(obj).forEach(([key, plugin]) => {
+		delete plugin.default; // XXX: hacky
+
 		let fn = plugin.plugin;
 		if(fn.call) {
 			plugin.plugin = `<Function ${fn.name}>`;
