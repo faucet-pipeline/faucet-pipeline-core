@@ -2,6 +2,28 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.4.0
+------
+
+_2020-03-16_
+
+notable changes for end users:
+
+* simplified use of custom plugins in configuration:
+
+  ```javascript
+  plugins: ["faucet-plugin-sample"]
+  ```
+
+notable changes for developers:
+
+* plugins are now responsible for their own configuration (instead of relegating
+  this to users' config file), exporting `{ key, bucket, plugin }` instead of
+  just a function
+
+  old-style plugins, while deprecated, are still supported though
+
+
 v1.3.2
 ------
 
