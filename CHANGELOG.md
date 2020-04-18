@@ -2,6 +2,20 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.5.0
+------
+
+_2020-04-21_
+
+notable changes for end users:
+
+* configuration can now be asynchronous, i.e. `faucet.config.js` may export a
+  promise, allowing for dynamically generated configuration values
+* updated dependencies
+
+no significant changes for developers
+
+
 v1.4.0
 ------
 
