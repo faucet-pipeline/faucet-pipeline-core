@@ -47,5 +47,12 @@ describe("asset manager", _ => {
 				assertSame(path.relative(root, filepath), "node_modules/dummy/index.js");
 			});
 		}
+
+		filepath = resolvePath("dummy/images");
+		assertSame(path.relative(root, filepath), "node_modules/dummy/images");
+
+		assert.throws(() => {
+			resolvePath("dummy/videos");
+		}, /exit 1/);
 	});
 });

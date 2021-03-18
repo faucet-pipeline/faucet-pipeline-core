@@ -37,6 +37,7 @@ describe("FileFinder", _ => {
 					"dummy/.keep",
 					"dummy/index.js",
 					"dummy/src.js",
+					"node_modules/dummy/images/.keep",
 					"node_modules/dummy/index.js",
 					"node_modules/dummy/pkg.js",
 					"node_modules/faucet-pipeline-dummy/index.js",
