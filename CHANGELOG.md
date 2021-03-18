@@ -2,6 +2,18 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.5.1
+------
+
+_?_
+
+notable changes for end users:
+
+* fixes resolution for non-JavaScript package
+
+no significant changes for developers
+
+
 v1.5.0
 ------
 
