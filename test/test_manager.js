@@ -7,9 +7,6 @@ let assert = require("assert");
 
 let assertSame = assert.strictEqual;
 
-let [major] = process.version.substr(1).split(".").map(i => parseInt(i, 10));
-let MODERN = major >= 12; // legacy doesn't throw due to working directory
-
 describe("asset manager", _ => {
 	let root = path.resolve(__dirname, "fixtures");
 	let cwd;
@@ -37,16 +34,14 @@ describe("asset manager", _ => {
 		filepath = resolvePath("./dummy/src.js");
 		assertSame(path.relative(root, filepath), "dummy/src.js");
 
-		if(MODERN) {
-			assert.throws(() => {
-				resolvePath("dummy/src.js");
-			}, /exit 1/);
+		assert.throws(() => {
+			resolvePath("dummy/src.js");
+		}, /exit 1/);
 
-			["dummy", "dummy/index", "dummy/index.js"].forEach(module => {
-				let filepath = resolvePath(module);
-				assertSame(path.relative(root, filepath), "node_modules/dummy/index.js");
-			});
-		}
+		["dummy", "dummy/index", "dummy/index.js"].forEach(module => {
+			let filepath = resolvePath(module);
+			assertSame(path.relative(root, filepath), "node_modules/dummy/index.js");
+		});
 
 		filepath = resolvePath("dummy/images");
 		assertSame(path.relative(root, filepath), "node_modules/dummy/images");
