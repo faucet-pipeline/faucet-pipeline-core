@@ -2,6 +2,19 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.6.0
+------
+
+_2021-05-03_
+
+notable changes for end users:
+
+* dropped support for Node 10
+* ensured Browserslist declarations within `package.json` support string values
+
+no significant changes for developers
+
+
 v1.5.1
 ------
 
