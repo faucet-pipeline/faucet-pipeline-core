@@ -2,6 +2,18 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.6.1
+------
+
+_2021-05-12_
+
+notable changes for end users:
+
+* fixed regression in Browserslist normalization
+
+no significant changes for developers
+
+
 v1.6.0
 ------
 
