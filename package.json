@@ -28,7 +28,7 @@
 		"node": ">= 12"
 	},
 	"dependencies": {
-		"browserslist": "~4.16.6",
+		"browserslist": "~4.17.2",
 		"minimist": "~1.2.5",
 		"nite-owl": "~5.0.4"
 	},
