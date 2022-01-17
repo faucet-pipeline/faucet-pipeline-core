@@ -6,7 +6,7 @@ let { readFileSync } = require("fs");
 let URL_PATTERN = /sourceMappingURL=data:(\S+)/;
 let MAP_PATTERN = /;base64,(\S+)$/;
 
-let [name, ...attributes] = process.argv.splice(2);
+let [name, ...attributes] = process.argv.slice(2);
 if(!name) {
 	console.error("missing file name");
 	process.exit(1);
