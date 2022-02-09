@@ -8,7 +8,9 @@ jobs:
             matrix:
                 node-version:
                 - 12.x
+                - 14.x
                 - 16.x
+                - 17.x
         steps:
         - uses: actions/checkout@v2.4.0
         - uses: actions/setup-node@v2.5.1
