@@ -2,6 +2,19 @@ faucet-pipeline-core version history
 ====================================
 
 
+v1.7.0
+------
+
+_2022-02-09_
+
+notable changes for end users:
+
+* Node 14 and 17 are now officially supported as well
+* update to Browserslist 4.19.1
+
+no significant changes for developers
+
+
 v1.6.1
 ------
 
