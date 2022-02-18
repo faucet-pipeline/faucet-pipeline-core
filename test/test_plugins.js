@@ -20,6 +20,10 @@ let DEFAULTS = {
 	static: {
 		bucket: "static",
 		plugin: "faucet-pipeline-static"
+	},
+	images: {
+		bucket: "static",
+		plugin: "faucet-pipeline-images"
 	}
 };
 
