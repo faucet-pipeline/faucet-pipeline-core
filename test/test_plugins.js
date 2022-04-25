@@ -47,8 +47,8 @@ describe("plugin registration", () => {
 		updateNodePath(NODE_PATH);
 	});
 
-	it("only loads default plugins referenced within configuration", () => {
-		let res = pluginsByBucket({
+	it("only loads default plugins referenced within configuration", async () => {
+		let res = await pluginsByBucket({
 			js: [{ foo: "lorem" }]
 		});
 		assertDeep(normalizeAll(res), {
@@ -61,7 +61,7 @@ describe("plugin registration", () => {
 			markup: []
 		});
 
-		res = pluginsByBucket({
+		res = await pluginsByBucket({
 			sass: [{ bar: "ipsum" }]
 		});
 		assertDeep(normalizeAll(res), {
@@ -74,7 +74,7 @@ describe("plugin registration", () => {
 			markup: []
 		});
 
-		res = pluginsByBucket({
+		res = await pluginsByBucket({
 			js: [{ foo: "lorem" }],
 			sass: [{ bar: "ipsum" }]
 		});
@@ -92,8 +92,8 @@ describe("plugin registration", () => {
 		});
 	});
 
-	it("allows overriding default plugins", () => {
-		let res = pluginsByBucket({
+	it("allows overriding default plugins", async () => {
+		let res = await pluginsByBucket({
 			js: [{ foo: "bar" }],
 			plugins: [{
 				key: "js",
@@ -128,12 +128,12 @@ describe("plugin resolution", () => {
 		updateNodePath(NODE_PATH);
 	});
 
-	it("provides a default set of plugins", () => {
-		let res = _determinePlugins();
+	it("provides a default set of plugins", async () => {
+		let res = await _determinePlugins();
 		assertDeep(normalizePlugins(res), DEFAULTS);
 	});
 
-	it("supports custom plugins", () => {
+	it("supports custom plugins", async () => {
 		// plugin function within configuration
 		let anon = () => {};
 		let config = [{
@@ -141,7 +141,7 @@ describe("plugin resolution", () => {
 			bucket: "static",
 			plugin: anon
 		}];
-		let res = _determinePlugins(config);
+		let res = await _determinePlugins(config);
 		assertDeep(normalizePlugins(res), Object.assign({}, DEFAULTS, {
 			dummy: {
 				bucket: "static",
@@ -152,7 +152,7 @@ describe("plugin resolution", () => {
 		// nested package identifier
 		let pkg = "faucet-pipeline-dummy";
 		config[0].plugin = pkg;
-		res = _determinePlugins(config);
+		res = await _determinePlugins(config);
 		assertDeep(normalizePlugins(res), Object.assign({}, DEFAULTS, {
 			dummy: {
 				bucket: "static",
@@ -162,7 +162,7 @@ describe("plugin resolution", () => {
 		}));
 
 		// simple package identifier
-		res = _determinePlugins([pkg]);
+		res = await _determinePlugins([pkg]);
 		assertDeep(normalizePlugins(res), Object.assign({}, DEFAULTS, {
 			dummy: {
 				bucket: "static",
@@ -171,12 +171,12 @@ describe("plugin resolution", () => {
 		}));
 	});
 
-	it("allows overriding plugins' default configuration", () => {
+	it("allows overriding plugins' default configuration", async () => {
 		let config = [{
 			key: "yummy",
 			plugin: "faucet-pipeline-dummy"
 		}];
-		let res = _determinePlugins(config);
+		let res = await _determinePlugins(config);
 		assertDeep(normalizePlugins(res), Object.assign({}, DEFAULTS, {
 			yummy: {
 				bucket: "static",
@@ -185,7 +185,7 @@ describe("plugin resolution", () => {
 		}));
 
 		config[0].bucket = "styles";
-		res = _determinePlugins(config);
+		res = await _determinePlugins(config);
 		assertDeep(normalizePlugins(res), Object.assign({}, DEFAULTS, {
 			yummy: {
 				bucket: "styles",
@@ -195,13 +195,13 @@ describe("plugin resolution", () => {
 		}));
 	});
 
-	it("balks at invalid package identifiers", () => {
-		assert.throws(() => {
-			_determinePlugins(["faucet-pipeline-yummy"]);
+	it("balks at invalid package identifiers", async () => {
+		await assert.rejects(async () => {
+			return _determinePlugins(["faucet-pipeline-yummy"]);
 		}, /exit 1/);
 
-		assert.throws(() => {
-			_determinePlugins([{
+		await assert.rejects(() => {
+			return _determinePlugins([{
 				// NB: local configuration must not be comprehensive to ensure
 				//     plugin is loaded
 				key: "yummy",
@@ -210,9 +210,9 @@ describe("plugin resolution", () => {
 		}, /exit 1/);
 	});
 
-	it("balks at duplicate configuration keys", () => {
-		assert.throws(() => {
-			_determinePlugins([{
+	it("balks at duplicate configuration keys", async () => {
+		await assert.rejects(() => {
+			return _determinePlugins([{
 				key: "dummy",
 				bucket: "static",
 				plugin: () => {}
@@ -224,35 +224,36 @@ describe("plugin resolution", () => {
 		}, /exit 1/);
 	});
 
-	it("balks at invalid plugins", () => {
-		assert.throws(() => {
-			_determinePlugins(["faucet-pipeline-invalid-a"]);
+	it("balks at invalid plugins", async () => {
+		await assert.rejects(() => {
+			return _determinePlugins(["faucet-pipeline-invalid-a"]);
 		}, /exit 1/);
 
-		assert.throws(() => {
-			_determinePlugins(["faucet-pipeline-invalid-b"]);
+		await assert.rejects(() => {
+			return _determinePlugins(["faucet-pipeline-invalid-b"]);
 		}, /exit 1/);
 
-		assert.throws(() => {
-			_determinePlugins(["faucet-pipeline-invalid-c"]);
+		await assert.rejects(() => {
+			return _determinePlugins(["faucet-pipeline-invalid-c"]);
 		}, /exit 1/);
 	});
 
-	it("balks at invalid buckets", () => {
+	it("balks at invalid buckets", async () => {
 		let plugin = {
 			key: "dummy",
 			plugin: () => {}
 		};
-		for(let bucket of ["static", "scripts", "styles", "markup"]) {
+		const buckets = ["static", "scripts", "styles", "markup"];
+		for(let bucket of buckets) {
 			plugin.bucket = bucket;
-			assert.doesNotThrow(() => {
-				_determinePlugins([plugin]);
+			await assert.doesNotReject(async () => {
+				return _determinePlugins([plugin]);
 			}, /exit 1/);
 		}
 
 		plugin.bucket = "dummy";
-		assert.throws(() => {
-			_determinePlugins([plugin]);
+		await assert.rejects(async () => {
+			return _determinePlugins([plugin]);
 		}, /exit 1/);
 	});
 });
