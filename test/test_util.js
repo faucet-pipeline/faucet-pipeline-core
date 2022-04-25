@@ -11,7 +11,7 @@ let assertDeep = assert.deepStrictEqual;
 
 let FIXTURES_PATH = path.resolve(__dirname, "fixtures");
 
-describe("fingerprinting", _ => {
+describe("fingerprinting", () => {
 	it("generates a content-dependent hash", () => {
 		let fingerprint = generateFingerprint("/path/to/foo.js", "lorem ipsum");
 		assertSame(fingerprint, "/path/to/foo-80a751fde577028640c419000e33eba6.js");
@@ -26,7 +26,7 @@ describe("fingerprinting", _ => {
 	});
 });
 
-describe("FileFinder", _ => {
+describe("FileFinder", () => {
 	it("finds all files within a folder", () => {
 		let fileFinder = new FileFinder(FIXTURES_PATH);
 

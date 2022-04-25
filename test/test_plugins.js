@@ -30,7 +30,7 @@ let DEFAULTS = {
 let { NODE_PATH } = process.env;
 let CUSTOM_NODE_PATH = path.resolve(ROOT, "node_modules");
 
-describe("plugin registration", _ => {
+describe("plugin registration", () => {
 	before(() => {
 		updateNodePath(NODE_PATH, CUSTOM_NODE_PATH);
 	});
@@ -105,7 +105,7 @@ describe("plugin registration", _ => {
 	});
 });
 
-describe("plugin resolution", _ => {
+describe("plugin resolution", () => {
 	let { exit } = process;
 
 	before(() => {

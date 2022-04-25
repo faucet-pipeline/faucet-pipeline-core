@@ -6,7 +6,7 @@ let assert = require("assert");
 
 let assertSame = assert.strictEqual;
 
-describe("server host parsing", _ => {
+describe("server host parsing", () => {
 	let { exit } = process;
 
 	before(() => {
