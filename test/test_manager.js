@@ -7,7 +7,7 @@ let assert = require("assert");
 
 let assertSame = assert.strictEqual;
 
-describe("asset manager", _ => {
+describe("asset manager", () => {
 	let root = path.resolve(__dirname, "fixtures");
 	let cwd;
 	let { exit } = process;
