@@ -4,5 +4,7 @@
 let { faucetDispatch } = require("../lib");
 let { parseCLI } = require("../lib/cli");
 
-let { referenceDir, config, options } = parseCLI();
-faucetDispatch(referenceDir, config, options);
+parseCLI().
+	then(({ referenceDir, config, options }) => {
+		faucetDispatch(referenceDir, config, options);
+	});
