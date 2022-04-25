@@ -2,7 +2,7 @@
 "use strict";
 
 let { generateFingerprint } = require("../lib/util");
-let FileFinder = require("../lib/util/files/finder");
+let { FileFinder } = require("../lib/util/files/finder");
 let path = require("path");
 let assert = require("assert");
 

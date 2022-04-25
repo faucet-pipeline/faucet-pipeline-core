@@ -1,7 +1,7 @@
 /* global describe, it */
 "use strict";
 
-let SerializedRunner = require("../lib/util/runner");
+let { SerializedRunner } = require("../lib/util/runner");
 let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("assert");
 
 describe("watch mode", () => {
