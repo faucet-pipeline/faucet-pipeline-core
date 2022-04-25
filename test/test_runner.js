@@ -1,6 +1,6 @@
 "use strict";
 
-let SerializedRunner = require("../lib/util/runner");
+let { SerializedRunner } = require("../lib/util/runner");
 let { describe, it } = require("node:test");
 let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("assert");
 

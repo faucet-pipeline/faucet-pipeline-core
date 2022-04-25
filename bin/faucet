@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 "use strict";
 
-let faucet = require("../lib");
-let parseCLI = require("../lib/cli");
+let { faucetDispatch } = require("../lib");
+let { parseCLI } = require("../lib/cli");
 
 let { referenceDir, config, options } = parseCLI();
-faucet(referenceDir, config, options);
+faucetDispatch(referenceDir, config, options);
