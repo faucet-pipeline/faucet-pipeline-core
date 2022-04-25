@@ -4,7 +4,7 @@
 let SerializedRunner = require("../lib/util/runner");
 let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("assert");
 
-describe("watch mode", _ => {
+describe("watch mode", () => {
 	it("avoids concurrent compilation, queueing recompilation", () => {
 		let bundle = new MockBundle();
 
@@ -13,7 +13,7 @@ describe("watch mode", _ => {
 		bundle.compile(); // skipped due to queue limit
 		let prevLog; // keeps track of compilation sequence
 		return bundle.compile(). // skipped due to queue limit
-			then(_ => {
+			then(() => {
 				let log = bundle.executionLog;
 				assertSame(log.length, 2); // compiled, then recompiled once
 				prevLog = [].concat(log);
@@ -23,7 +23,7 @@ describe("watch mode", _ => {
 				bundle.compile(); // skipped due to queue limit
 				return bundle.compile(); // skipped due to queue limit
 			}).
-			then(_ => {
+			then(() => {
 				let log = bundle.executionLog;
 				assertSame(log.length, 4); // compiled, then recompiled once
 				assertDeep(log.slice(0, prevLog.length), prevLog);
@@ -31,7 +31,7 @@ describe("watch mode", _ => {
 
 				return bundle.compile(); // starts compilation
 			}).
-			then(_ => {
+			then(() => {
 				let log = bundle.executionLog;
 				assertSame(log.length, 5);
 				assertDeep(log.slice(0, prevLog.length), prevLog);
@@ -57,7 +57,7 @@ class MockBundle {
 
 	_compile(id) {
 		return wait(1).
-			then(_ => {
+			then(() => {
 				if(id) {
 					this.executionLog.push(id);
 				}
@@ -67,6 +67,6 @@ class MockBundle {
 
 function wait(delay) {
 	return new Promise(resolve => {
-		setTimeout(_ => { resolve(); }, delay);
+		setTimeout(() => { resolve(); }, delay);
 	});
 }

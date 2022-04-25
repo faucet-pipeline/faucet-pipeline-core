@@ -7,7 +7,7 @@ let assert = require("assert");
 
 let assertSame = assert.strictEqual;
 
-describe("manifest", _ => {
+describe("manifest", () => {
 	let root = path.resolve(__dirname, "fixtures");
 	let cwd;
 
@@ -23,18 +23,18 @@ describe("manifest", _ => {
 	it("maps original to actual file names with deterministic serialization", () => {
 		let manifest = new Manifest(root);
 		return manifest.set("foo.png", "foo-abc123.png").
-			then(_ => {
+			then(() => {
 				assertSame(JSON.stringify(manifest), '{"foo.png":"/foo-abc123.png"}');
 
 				return manifest.set("bar.css", "bar-def456.css");
 			}).
-			then(_ => {
+			then(() => {
 				assertSame(JSON.stringify(manifest),
 						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}');
 
 				return manifest.set("xox.js", "xox-ghi789.js");
 			}).
-			then(_ => {
+			then(() => {
 				assertSame(JSON.stringify(manifest), // eslint-disable-next-line max-len
 						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}');
 			});
