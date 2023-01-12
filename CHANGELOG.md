@@ -2,6 +2,25 @@ faucet-pipeline-core version history
 ====================================
 
 
+v2.0.0
+------
+
+_2023-01-12_
+
+notable changes for end users:
+
+* added support for faucet-pipeline-images
+
+  `plugins: [require("faucet-pipeline-images")]` is no longer required within
+  `faucet.config.js`
+
+notable changes for developers:
+
+* removed support for legacy plugin API
+
+  all plugins are now expected to export `key`, `bucket` and `plugin`
+
+
 v1.7.0
 ------
 
