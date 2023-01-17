@@ -1,10 +1,6 @@
 /* global describe, before, after, it */
-"use strict";
-
-let { _parseHost } = require("../lib/server");
-let assert = require("assert");
-
-let assertSame = assert.strictEqual;
+import { _parseHost } from "../lib/server.js";
+import assert, { strictEqual as assertSame } from "assert";
 
 describe("server host parsing", () => {
 	let { exit } = process;

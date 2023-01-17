@@ -1,14 +1,13 @@
 /* global describe, before, after, it */
-"use strict";
+import { Manifest } from "../lib/manifest.js";
+import { fileURLToPath } from "url";
+import path from "path";
+import { strictEqual as assertSame } from "assert";
 
-let { Manifest } = require("../lib/manifest");
-let path = require("path");
-let assert = require("assert");
-
-let assertSame = assert.strictEqual;
+let ROOT = path.dirname(fileURLToPath(import.meta.url));
 
 describe("manifest", () => {
-	let root = path.resolve(__dirname, "fixtures");
+	let root = path.resolve(ROOT, "fixtures");
 	let cwd;
 
 	before(() => {
