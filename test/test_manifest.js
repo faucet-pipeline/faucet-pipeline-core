@@ -1,7 +1,7 @@
-/* global describe, before, after, it */
 "use strict";
 
 let { Manifest } = require("../lib/manifest");
+let { describe, it, before, after } = require("node:test");
 let path = require("path");
 let assert = require("assert");
 

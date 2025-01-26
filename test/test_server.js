@@ -1,7 +1,7 @@
-/* global describe, before, after, it */
 "use strict";
 
 let { _parseHost } = require("../lib/server");
+let { describe, it, before, after } = require("node:test");
 let assert = require("assert");
 
 let assertSame = assert.strictEqual;

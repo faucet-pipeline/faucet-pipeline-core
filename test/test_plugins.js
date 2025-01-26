@@ -1,7 +1,7 @@
-/* global describe, before, after, it */
 "use strict";
 
 let { pluginsByBucket, _determinePlugins } = require("../lib/plugins");
+let { describe, it, before, after } = require("node:test");
 let path = require("path");
 let assert = require("assert");
 
@@ -187,12 +187,12 @@ describe("plugin resolution", () => {
 		}));
 	});
 
-	it("balks at invalid package identifiers", () => {
-		assert.rejects(async () => {
+	it("balks at invalid package identifiers", async () => {
+		await assert.rejects(async () => {
 			return _determinePlugins(["faucet-pipeline-yummy"]);
 		}, /exit 1/);
 
-		assert.rejects(() => {
+		await assert.rejects(() => {
 			return _determinePlugins([{
 				// NB: local configuration must not be comprehensive to ensure
 				//     plugin is loaded
@@ -202,8 +202,8 @@ describe("plugin resolution", () => {
 		}, /exit 1/);
 	});
 
-	it("balks at duplicate configuration keys", () => {
-		assert.rejects(() => {
+	it("balks at duplicate configuration keys", async () => {
+		await assert.rejects(() => {
 			return _determinePlugins([{
 				key: "dummy",
 				bucket: "static",
@@ -216,34 +216,35 @@ describe("plugin resolution", () => {
 		}, /exit 1/);
 	});
 
-	it("balks at invalid plugins", () => {
-		assert.rejects(() => {
+	it("balks at invalid plugins", async () => {
+		await assert.rejects(() => {
 			return _determinePlugins(["faucet-pipeline-invalid-a"]);
 		}, /exit 1/);
 
-		assert.rejects(() => {
+		await assert.rejects(() => {
 			return _determinePlugins(["faucet-pipeline-invalid-b"]);
 		}, /exit 1/);
 
-		assert.rejects(() => {
+		await assert.rejects(() => {
 			return _determinePlugins(["faucet-pipeline-invalid-c"]);
 		}, /exit 1/);
 	});
 
-	it("balks at invalid buckets", () => {
+	it("balks at invalid buckets", async () => {
 		let plugin = {
 			key: "dummy",
 			plugin: () => {}
 		};
-		["static", "scripts", "styles", "markup"].forEach(bucket => {
+		const buckets = ["static", "scripts", "styles", "markup"];
+		for(let bucket of buckets) {
 			plugin.bucket = bucket;
-			assert.doesNotReject(() => {
+			await assert.doesNotReject(async () => {
 				return _determinePlugins([plugin]);
 			}, /exit 1/);
-		});
+		}
 
 		plugin.bucket = "dummy";
-		assert.rejects(() => {
+		await assert.rejects(async () => {
 			return _determinePlugins([plugin]);
 		}, /exit 1/);
 	});

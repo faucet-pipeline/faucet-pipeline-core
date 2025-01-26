@@ -1,8 +1,8 @@
-/* global describe, it */
 "use strict";
 
 let { generateFingerprint } = require("../lib/util");
 let { FileFinder } = require("../lib/util/files/finder");
+let { describe, it } = require("node:test");
 let path = require("path");
 let assert = require("assert");
 
