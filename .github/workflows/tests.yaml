@@ -1,18 +1,18 @@
-name: tests
 on:
 - push
+
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
         strategy:
             matrix:
                 node-version:
-                - 14.x
-                - 18.x
-                - 19.x
+                - 20.x
+                - 24.x
+                - latest
         steps:
-        - uses: actions/checkout@v3
-        - uses: actions/setup-node@v3
+        - uses: actions/checkout@v5
+        - uses: actions/setup-node@v6
           with:
               node-version: ${{ matrix.node-version }}
         - run: npm install-test
