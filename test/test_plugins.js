@@ -1,7 +1,7 @@
-/* global describe, before, after, it */
 "use strict";
 
 let { pluginsByBucket, _determinePlugins } = require("../lib/plugins");
+let { describe, it, before, after } = require("node:test");
 let path = require("path");
 let assert = require("assert");
 
@@ -243,12 +243,12 @@ describe("plugin resolution", () => {
 			key: "dummy",
 			plugin: () => {}
 		};
-		["static", "scripts", "styles", "markup"].forEach(bucket => {
+		for(let bucket of ["static", "scripts", "styles", "markup"]) {
 			plugin.bucket = bucket;
 			assert.doesNotThrow(() => {
 				_determinePlugins([plugin]);
 			}, /exit 1/);
-		});
+		}
 
 		plugin.bucket = "dummy";
 		assert.throws(() => {

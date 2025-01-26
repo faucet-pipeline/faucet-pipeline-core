@@ -1,7 +1,7 @@
-/* global describe, before, after, it */
 "use strict";
 
 let AssetManager = require("../lib/manager");
+let { describe, it, before, after } = require("node:test");
 let path = require("path");
 let assert = require("assert");
 
