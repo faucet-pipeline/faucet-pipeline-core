@@ -1,15 +1,12 @@
 /* global describe, it */
-"use strict";
+import { generateFingerprint } from "../lib/util/index.js";
+import { FileFinder } from "../lib/util/files/finder.js";
+import { fileURLToPath } from "url";
+import path from "path";
+import { strictEqual as assertSame, deepStrictEqual as assertDeep } from "assert";
 
-let { generateFingerprint } = require("../lib/util");
-let { FileFinder } = require("../lib/util/files/finder");
-let path = require("path");
-let assert = require("assert");
-
-let assertSame = assert.strictEqual;
-let assertDeep = assert.deepStrictEqual;
-
-let FIXTURES_PATH = path.resolve(__dirname, "fixtures");
+let ROOT = path.dirname(fileURLToPath(import.meta.url));
+let FIXTURES_PATH = path.resolve(ROOT, "fixtures");
 
 describe("fingerprinting", () => {
 	it("generates a content-dependent hash", () => {

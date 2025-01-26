@@ -15,6 +15,7 @@
 	"bugs": {
 		"url": "https://github.com/faucet-pipeline/faucet-pipeline-core/issues"
 	},
+	"type": "module",
 	"main": "lib/index.js",
 	"bin": {
 		"faucet": "bin/faucet"

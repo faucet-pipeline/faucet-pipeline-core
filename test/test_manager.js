@@ -1,14 +1,13 @@
 /* global describe, before, after, it */
-"use strict";
+import { AssetManager } from "../lib/manager.js";
+import { fileURLToPath } from "url";
+import path from "path";
+import assert, { strictEqual as assertSame } from "assert";
 
-let { AssetManager } = require("../lib/manager");
-let path = require("path");
-let assert = require("assert");
-
-let assertSame = assert.strictEqual;
+let ROOT = path.dirname(fileURLToPath(import.meta.url));
 
 describe("asset manager", () => {
-	let root = path.resolve(__dirname, "fixtures");
+	let root = path.resolve(ROOT, "fixtures");
 	let cwd;
 	let { exit } = process;
 

@@ -1,13 +1,11 @@
 /* global describe, before, after, it */
-"use strict";
+import { pluginsByBucket, _determinePlugins } from "../lib/plugins.js";
+import { fileURLToPath } from "url";
+import path from "path";
+import assert, { deepStrictEqual as assertDeep } from "assert";
 
-let { pluginsByBucket, _determinePlugins } = require("../lib/plugins");
-let path = require("path");
-let assert = require("assert");
-
-let { deepStrictEqual: assertDeep } = assert;
-
-let ROOT = path.resolve(__dirname, "fixtures");
+let ROOT = path.dirname(fileURLToPath(import.meta.url));
+let FIXTURES_PATH = path.resolve(ROOT, "fixtures");
 let DEFAULTS = {
 	js: {
 		bucket: "scripts",
@@ -28,15 +26,15 @@ let DEFAULTS = {
 };
 
 let { NODE_PATH } = process.env;
-let CUSTOM_NODE_PATH = path.resolve(ROOT, "node_modules");
+let CUSTOM_NODE_PATH = path.resolve(FIXTURES_PATH, "node_modules");
 
 describe("plugin registration", () => {
 	before(() => {
-		updateNodePath(NODE_PATH, CUSTOM_NODE_PATH);
+		return updateNodePath(NODE_PATH, CUSTOM_NODE_PATH);
 	});
 
 	after(() => {
-		updateNodePath(NODE_PATH);
+		return updateNodePath(NODE_PATH);
 	});
 
 	it("only loads default plugins referenced within configuration", async () => {
@@ -112,12 +110,12 @@ describe("plugin resolution", () => {
 		process.exit = code => {
 			throw new Error(`exit ${code}`);
 		};
-		updateNodePath(NODE_PATH, CUSTOM_NODE_PATH);
+		return updateNodePath(NODE_PATH, CUSTOM_NODE_PATH);
 	});
 
 	after(() => {
 		process.exit = exit;
-		updateNodePath(NODE_PATH);
+		return updateNodePath(NODE_PATH);
 	});
 
 	it("provides a default set of plugins", async () => {
@@ -269,7 +267,8 @@ function normalizePlugins(obj) {
 	return obj;
 }
 
-function updateNodePath(...paths) {
+async function updateNodePath(...paths) {
 	process.env.NODE_PATH = paths.join(":");
-	require("module").Module._initPaths();
+	let { Module } = await import("module");
+	Module._initPaths();
 }

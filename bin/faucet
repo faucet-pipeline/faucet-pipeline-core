@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-"use strict";
-
-let { faucetDispatch } = require("../lib");
-let { parseCLI } = require("../lib/cli");
+import { faucetDispatch } from "../lib/index.js";
+import { parseCLI } from "../lib/cli.js";
 
 parseCLI().
 	then(({ referenceDir, config, options }) => {

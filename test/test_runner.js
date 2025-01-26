@@ -1,8 +1,6 @@
 /* global describe, it */
-"use strict";
-
-let { SerializedRunner } = require("../lib/util/runner");
-let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("assert");
+import { SerializedRunner } from "../lib/util/runner.js";
+import { strictEqual as assertSame, deepStrictEqual as assertDeep } from "assert";
 
 describe("watch mode", () => {
 	it("avoids concurrent compilation, queueing recompilation", () => {
