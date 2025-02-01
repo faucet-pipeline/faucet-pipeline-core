@@ -2,6 +2,24 @@ faucet-pipeline-core version history
 ====================================
 
 
+v2.0.1
+------
+
+_2025-02-01_
+
+notable changes for end users:
+
+* dropped support for obsolete Node versions; now requires Node v18 or later
+* reduced number of dependencies
+
+notable changes for developers:
+
+* switched to named instead of default exports
+
+  this might affect users of utility functions like `createFile` or
+  `resolvePath`
+
+
 v2.0.0
 ------
 
