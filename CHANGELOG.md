@@ -2,6 +2,29 @@ faucet-pipeline-core version history
 ====================================
 
 
+v3.0.0
+------
+
+_2025-03-02_
+
+notable changes for end users:
+
+* bumped Node requirement to v18 or later, dropping support for obsolete versions
+* reduced number of dependencies
+
+notable changes for developers:
+
+* switched to named instead of default exports
+
+  this might affect users of utilities like `resolvePath` and `FileFinder`
+
+* ensured dynamic imports are asynchronous
+
+  this might affect users of utilities like `loadExtension`
+
+* `promisify` was removed entirely after being deprecated for a while
+
+
 v2.0.0
 ------
 
