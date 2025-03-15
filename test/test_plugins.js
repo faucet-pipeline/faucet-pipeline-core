@@ -21,6 +21,10 @@ let DEFAULTS = {
 		bucket: "static",
 		plugin: "faucet-pipeline-static"
 	},
+	assets: {
+		bucket: "static",
+		plugin: "faucet-pipeline-static"
+	},
 	images: {
 		bucket: "static",
 		plugin: "faucet-pipeline-images"
