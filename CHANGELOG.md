@@ -2,6 +2,19 @@ faucet-pipeline-core version history
 ====================================
 
 
+v2.1.0
+------
+
+_2025-10-26_
+
+notable changes for end users:
+
+* added support for faucet-pipeline-assets and faucet-pipeline-css
+* dropped support for Node 19 and below
+
+no significant changes for developers
+
+
 v2.0.0
 ------
 
