@@ -9,9 +9,17 @@ let { deepStrictEqual: assertDeep } = assert;
 
 let ROOT = path.resolve(__dirname, "fixtures");
 let DEFAULTS = {
+	assets: {
+		bucket: "static",
+		plugin: "faucet-pipeline-assets"
+	},
 	js: {
 		bucket: "scripts",
 		plugin: "faucet-pipeline-js"
+	},
+	css: {
+		bucket: "styles",
+		plugin: "faucet-pipeline-css"
 	},
 	sass: {
 		bucket: "styles",
