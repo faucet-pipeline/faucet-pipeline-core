@@ -2,6 +2,21 @@ faucet-pipeline-core version history
 ====================================
 
 
+v2.2.0
+------
+
+_2025-10-31_
+
+notable changes for end users:
+
+* reduced the number of third-party dependencies
+
+notable changes for developers:
+
+* `faucetDispatch` now has a return value which reports completion of the
+  initial build
+
+
 v2.1.0
 ------
 
