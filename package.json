@@ -1,6 +1,6 @@
 {
 	"name": "faucet-pipeline-core",
-	"version": "2.2.0",
+	"version": "3.0.0",
 	"description": "faucet-pipeline's core library",
 	"author": "FND",
 	"contributors": [
@@ -25,10 +25,10 @@
 		"lint": "eslint --cache ./lib ./bin/* ./test ./test/bin/* && echo ✓"
 	},
 	"engines": {
-		"node": ">= 20"
+		"node": ">= 18"
 	},
 	"dependencies": {
-		"browserslist": "~4.27.0",
+		"browserslist": "~4.24.4",
 		"nite-owl": "~5.0.5"
 	},
 	"devDependencies": {
