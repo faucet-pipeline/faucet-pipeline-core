@@ -5,7 +5,7 @@ let { describe, it, before, after } = require("node:test");
 let path = require("path");
 let assert = require("assert");
 
-let assertSame = assert.strictEqual;
+let assertDeep = assert.deepStrictEqual;
 
 describe("manifest", () => {
 	let root = path.resolve(__dirname, "fixtures");
@@ -24,19 +24,26 @@ describe("manifest", () => {
 		let manifest = new Manifest(root);
 		return manifest.set("foo.png", "foo-abc123.png").
 			then(() => {
-				assertSame(JSON.stringify(manifest), '{"foo.png":"/foo-abc123.png"}');
+				assertDeep(manifest.entries, {
+					"foo.png": "/foo-abc123.png"
+				});
 
 				return manifest.set("bar.css", "bar-def456.css");
 			}).
 			then(() => {
-				assertSame(JSON.stringify(manifest),
-						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}');
+				assertDeep(manifest.entries, {
+					"foo.png": "/foo-abc123.png",
+					"bar.css": "/bar-def456.css"
+				});
 
 				return manifest.set("xox.js", "xox-ghi789.js");
 			}).
 			then(() => {
-				assertSame(JSON.stringify(manifest), // eslint-disable-next-line max-len
-						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}');
+				assertDeep(manifest.entries, {
+					"foo.png": "/foo-abc123.png",
+					"bar.css": "/bar-def456.css",
+					"xox.js": "/xox-ghi789.js"
+				});
 			});
 	});
 });
