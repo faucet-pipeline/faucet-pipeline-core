@@ -30,13 +30,13 @@ describe("manifest", () => {
 			}).
 			then(() => {
 				assertSame(JSON.stringify(manifest),
-						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png"}');
+						'{"foo.png":"/foo-abc123.png","bar.css":"/bar-def456.css"}');
 
 				return manifest.set("xox.js", "xox-ghi789.js");
 			}).
 			then(() => {
 				assertSame(JSON.stringify(manifest), // eslint-disable-next-line max-len
-						'{"bar.css":"/bar-def456.css","foo.png":"/foo-abc123.png","xox.js":"/xox-ghi789.js"}');
+						'{"foo.png":"/foo-abc123.png","bar.css":"/bar-def456.css","xox.js":"/xox-ghi789.js"}');
 			});
 	});
 });
