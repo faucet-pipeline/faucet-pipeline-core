@@ -2,8 +2,8 @@
 
 let { pluginsByBucket, _determinePlugins } = require("../lib/plugins");
 let { describe, it, before, after } = require("node:test");
-let path = require("path");
-let assert = require("assert");
+let path = require("node:path");
+let assert = require("node:assert");
 
 let { deepStrictEqual: assertDeep } = assert;
 
@@ -276,5 +276,5 @@ function normalizePlugins(obj) {
 
 function updateNodePath(...paths) {
 	process.env.NODE_PATH = paths.join(":");
-	require("module").Module._initPaths();
+	require("node:module").Module._initPaths();
 }

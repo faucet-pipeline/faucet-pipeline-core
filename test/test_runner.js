@@ -2,7 +2,7 @@
 
 let { SerializedRunner } = require("../lib/runner");
 let { describe, it } = require("node:test");
-let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("assert");
+let { strictEqual: assertSame, deepStrictEqual: assertDeep } = require("node:assert");
 
 describe("watch mode", () => {
 	it("avoids concurrent compilation, queueing recompilation", () => {
