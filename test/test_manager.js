@@ -55,14 +55,14 @@ describe("asset manager", () => {
 describe("fingerprinting", () => {
 	it("generates a content-dependent hash", () => {
 		let fingerprint = _generateFingerprint("/path/to/foo.js", "lorem ipsum");
-		assertSame(fingerprint, "/path/to/foo-80a751fde577028640c419000e33eba6.js");
+		assertSame(fingerprint, "/path/to/foo-5e2bf57d3f40c4b6df69daf1936cb766f832374b4fc0259a7cbff06e2f70f269.js");
 
 		fingerprint = _generateFingerprint("/path/to/bar.js", "dolor sit amet");
-		assertSame(fingerprint, "/path/to/bar-7afed6210e0b8fce023f06abd4490fa0.js");
+		assertSame(fingerprint, "/path/to/bar-aa8311d08b68a5fdda55ad0947fff3c5a4b2397f5f766e9c9a79f4a5486c633c.js");
 	});
 
 	it("supports files without extension", () => {
 		let fingerprint = _generateFingerprint("/path/to/baz", "lipsum");
-		assertSame(fingerprint, "/path/to/baz-8047cfaac755e5c7f77af066123980a5");
+		assertSame(fingerprint, "/path/to/baz-832b7bbc3786888cd1105828577189fc96495da5bd37b84e85e820f490c53cc8");
 	});
 });
